@@ -22,12 +22,28 @@ public class Pago {
 
 	@Column(name = "idSolicitud", nullable = false)
 	private int idSolicitud;
-
-	// Getters y setters
+	
+	//Relacion uno a uno con la clase Solicitud
+	@OneToOne
+	@JoinColumn(name = "idSolicitud",nullable = false,unique = true)
+	private Solicitud solicitud;
+	
+	//Constructores
 	public int getIdPago() {
 		return idPago;
 	}
 
+	public Pago(String metodo, int tarifa, Date fechaPago, int idSolicitud, Solicitud solicitud) {
+		super();
+		this.metodo = metodo;
+		this.tarifa = tarifa;
+		this.fechaPago = fechaPago;
+		this.idSolicitud = idSolicitud;
+		this.solicitud = solicitud;
+	}
+	
+	
+	// Getters y setters
 	public void setIdPago(int idPago) {
 		this.idPago = idPago;
 	}

@@ -1,6 +1,7 @@
 package com.project.ProyectoFreshhome.entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -39,8 +40,10 @@ public class Cliente {
 	//Cuando es una relacion de uno a muchos en la que hace de uno se crea una lista
 	//con objetos de la otra clase que hace de muchos.
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Solicitud> Solicitudes;
+	private List<Solicitud> Solicitudes = new ArrayList<>(); 
 
+	
+	//Constructores
 	public Cliente() {
 		super();
 	}
@@ -121,4 +124,13 @@ public class Cliente {
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
+
+	public List<Solicitud> getSolicitudes() {
+		return Solicitudes;
+	}
+
+	public void setSolicitudes(List<Solicitud> solicitudes) {
+		Solicitudes = solicitudes;
+	}
+	
 }

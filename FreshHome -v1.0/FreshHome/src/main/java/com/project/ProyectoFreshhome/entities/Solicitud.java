@@ -1,7 +1,6 @@
 package com.project.ProyectoFreshhome.entities;
 
 import java.sql.Date;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -19,29 +18,28 @@ public class Solicitud {
 
 	@Column(name = "nombreCliente", nullable = false)
 	private String nombreCliente;
-	
-	//Se deja igual ya que en una relacion uno a uno y mas cuando 
-	//solo usaras el atributo como tal.
+
 	@Column(name = "direccionCliente", nullable = false)
 	private String direccionCliente;
 
 	@Column(name = "tarifa", nullable = false)
 	private int tarifa;
 
-	@Column(name = "IdPago", nullable = false)
-	private int idPago;
-
 	
-	//Relacion de IdCliente con la clase cliente como tal.
-	@OneToOne
-	@JoinColumn(name = "IdCliente", nullable = false)
+	//Relacion de IdCliente con la clase cliente.
+	@ManyToOne
+	@JoinColumn(name = "idCliente", nullable = false)
 	private Cliente cliente;
-
-	@Column(name = "IdEmpleado", nullable = false)
-	private int idEmpleado;
-
-	@Column(name = "IdHabilidad", nullable = false)
-	private int idHabilidad;
+	
+	//Relacion de IdEmpleado con la clase empleado
+	@ManyToOne
+	@JoinColumn(name = "idEmpleado", nullable = false)
+	private Empleado empleado;
+	
+	//Relacion de IdPago con la clase Pago
+	@OneToOne(mappedBy = "solicitud",cascade = CascadeType.ALL)
+	private Pago pago;
+	
 
 	@Column(name = "CalificacionCliente", nullable = false)
 	private int calificacionCliente;
@@ -55,7 +53,31 @@ public class Solicitud {
 	@Column(name = "ObservacioneEmpleado", nullable = false)
 	private String observacioneEmpleado;
 
-	// Getters y setters
+	//Constructores
+	public Solicitud(String descripcion, Date fechaSolicitud, String nombreCliente, String direccionCliente, int tarifa,
+			Cliente cliente, Empleado empleado, Pago pago, int calificacionCliente, String observacioneCliente,
+			int calificacionEmpleado, String observacioneEmpleado) {
+		super();
+		this.descripcion = descripcion;
+		this.fechaSolicitud = fechaSolicitud;
+		this.nombreCliente = nombreCliente;
+		this.direccionCliente = direccionCliente;
+		this.tarifa = tarifa;
+		this.cliente = cliente;
+		this.empleado = empleado;
+		this.pago = pago;
+		this.calificacionCliente = calificacionCliente;
+		this.observacioneCliente = observacioneCliente;
+		this.calificacionEmpleado = calificacionEmpleado;
+		this.observacioneEmpleado = observacioneEmpleado;
+	}
+	
+	
+	public Solicitud() {
+		super();
+	}
+
+
 	public int getIdSolicitud() {
 		return idSolicitud;
 	}
@@ -104,14 +126,7 @@ public class Solicitud {
 		this.tarifa = tarifa;
 	}
 
-	public int getIdPago() {
-		return idPago;
-	}
 
-	public void setIdPago(int idPago) {
-		this.idPago = idPago;
-	}
-	
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -128,21 +143,6 @@ public class Solicitud {
 		this.cliente = cliente;
 	}
 
-	public int getIdEmpleado() {
-		return idEmpleado;
-	}
-
-	public void setIdEmpleado(int idEmpleado) {
-		this.idEmpleado = idEmpleado;
-	}
-
-	public int getIdHabilidad() {
-		return idHabilidad;
-	}
-
-	public void setIdHabilidad(int idHabilidad) {
-		this.idHabilidad = idHabilidad;
-	}
 
 	public int getCalificacionCliente() {
 		return calificacionCliente;
@@ -175,4 +175,22 @@ public class Solicitud {
 	public void setObservacioneEmpleado(String observacioneEmpleado) {
 		this.observacioneEmpleado = observacioneEmpleado;
 	}
+
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+
+	public Pago getPago() {
+		return pago;
+	}
+
+	public void setPago(Pago pago) {
+		this.pago = pago;
+	}
+	
+	
 }

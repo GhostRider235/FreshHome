@@ -1,5 +1,8 @@
 package com.project.ProyectoFreshhome.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +17,24 @@ public class Habilidad {
 
 	@Column(name = "IdEmpleado")
 	private int idEmpleado;
+	
+	//Relacion con empleados
+	@ManyToMany(mappedBy = "Habilidades",cascade = CascadeType.ALL)
+	private Set<Empleado> Empleados = new HashSet<>();
+	
+	
+	//Constructores
+	public Habilidad(String habilidad, int idEmpleado, Set<Empleado> empleados) {
+		super();
+		this.habilidad = habilidad;
+		this.idEmpleado = idEmpleado;
+		Empleados = empleados;
+	}
+	public Habilidad() {
+		super();
+	}
+
+
 
 	// Getters y setters
 	public int getIdHabilidad() {
