@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class Empleado {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idEmpleado;
+	private int IdEmpleado;
 
 	@Column(name = "nombreEmpleado", nullable = false, length = 50)
 	private String nombreEmpleado;
@@ -29,20 +29,24 @@ public class Empleado {
 	@Column(name = "CalificacionEmpleado", nullable = false)
 	private int calificacionEmpleado;
 
-	@Column(name = "Contraseña", nullable = false, length = 50)
+	@Column(name = "Contraseña", nullable = false, length = 255)
 	private String contrasena;
 
 	// Relacio de uno(Empleado) a muchos(Solicitud)
 	@OneToMany(mappedBy = "empleado",cascade = CascadeType.ALL)
-	private List<Solicitud> Solicitudes = new ArrayList<>();
+	private List<Solicitud> solicitudes = new ArrayList<>();
 
-	
 	// Relacion con habilidades
-	@OneToMany(mappedBy = "IdEmpleado", cascade = CascadeType.ALL)
-	private Set<Habilidad> Habilidades = new HashSet<>();
+	@OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL)
+	private Set<Habilidad> habilidades = new HashSet<>();
 
 	
-	//Constructor
+	//Constructores
+	public Empleado() {
+		super();
+	}
+
+
 	public Empleado(String nombreEmpleado, String correo, Date fechaNacimiento, int anosExperiencia, int edad,
 			int calificacionEmpleado, String contrasena, List<Solicitud> solicitudes, Set<Habilidad> habilidades) {
 		super();
@@ -53,21 +57,17 @@ public class Empleado {
 		this.edad = edad;
 		this.calificacionEmpleado = calificacionEmpleado;
 		this.contrasena = contrasena;
-		Solicitudes = solicitudes;
-		Habilidades = habilidades;
-	}
-
-	public Empleado() {
-		super();
+		this.solicitudes = solicitudes;
+		this.habilidades = habilidades;
 	}
 
 
 	// Getters y setters
 	public int getIdEmpleado() {
-		return idEmpleado;
+		return IdEmpleado;
 	}
-	public void setIdEmpleado(int idEmpleado) {
-		this.idEmpleado = idEmpleado;
+	public void setIdEmpleado(int IdEmpleado) {
+		this.IdEmpleado = IdEmpleado;
 	}
 
 	public String getNombreEmpleado() {
@@ -127,20 +127,21 @@ public class Empleado {
 	}
 
 	public List<Solicitud> getSolicitudes() {
-		return Solicitudes;
+		return solicitudes;
 	}
 
 	public void setSolicitudes(List<Solicitud> solicitudes) {
-		Solicitudes = solicitudes;
+		this.solicitudes = solicitudes;
 	}
 
 	public Set<Habilidad> getHabilidades() {
-		return Habilidades;
+		return habilidades;
 	}
 
 	public void setHabilidades(Set<Habilidad> habilidades) {
-		Habilidades = habilidades;
+		this.habilidades = habilidades;
 	}
+
 
 	
 }

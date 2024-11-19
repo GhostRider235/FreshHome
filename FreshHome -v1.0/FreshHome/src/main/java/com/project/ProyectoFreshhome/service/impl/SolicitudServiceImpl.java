@@ -16,22 +16,22 @@ public class SolicitudServiceImpl implements SolicitudService {
     private SolicitudRepository solicitudRepository;
 
     @Override
-    public List<Solicitud> findAll() {
+    public List<Solicitud> listaSolicitudes() {
         return solicitudRepository.findAll();
     }
 
     @Override
-    public Optional<Solicitud> findById(int id) {
+    public Optional<Solicitud> BuscarSolicitud(int id) {
         return solicitudRepository.findById(id);
     }
 
     @Override
-    public Solicitud save(Solicitud solicitud) {
+    public Solicitud agregar(Solicitud solicitud) {
         return solicitudRepository.save(solicitud);
     }
 
     @Override
-    public void deleteById(int id) {
+    public void eliminar(int id) {
         solicitudRepository.deleteById(id);
     }
 }

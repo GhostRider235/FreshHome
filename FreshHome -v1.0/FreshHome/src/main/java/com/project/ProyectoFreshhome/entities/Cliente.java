@@ -11,12 +11,12 @@ import jakarta.persistence.*;
 public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCliente;
+	private int IdCliente;
 
 	@Column(name = "nombreCliente", nullable = false, length = 50)
 	private String nombreCliente;
 
-	@Column(name = "Correo", nullable = false, length = 50)
+	@Column(name = "Correo", nullable = false, length = 255)
 	private String correo;
 
 	@Column(name = "FechaNacimiento", nullable = false)
@@ -31,16 +31,13 @@ public class Cliente {
 	@Column(name = "CalificacionCliente", nullable = false)
 	private int calificacionCliente;
 
-	@OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Solicitud solicitud;
-
-	@Column(name = "Contraseña", nullable = false, length = 50)
+	@Column(name = "Contraseña", nullable = false, length = 255)
 	private String contrasena;
 	
 	//Cuando es una relacion de uno a muchos en la que hace de uno se crea una lista
 	//con objetos de la otra clase que hace de muchos.
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Solicitud> Solicitudes = new ArrayList<>(); 
+	private List<Solicitud> solicitudes = new ArrayList<>(); 
 
 	
 	//Constructores
@@ -62,11 +59,11 @@ public class Cliente {
 
 	// Getters y setters
 	public int getIdCliente() {
-		return idCliente;
+		return IdCliente;
 	}
 
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
+	public void setIdCliente(int IdCliente) {
+		this.IdCliente = IdCliente;
 	}
 
 	public String getNombreCliente() {
@@ -126,11 +123,13 @@ public class Cliente {
 	}
 
 	public List<Solicitud> getSolicitudes() {
-		return Solicitudes;
+		return solicitudes;
 	}
 
 	public void setSolicitudes(List<Solicitud> solicitudes) {
-		Solicitudes = solicitudes;
+		this.solicitudes = solicitudes;
 	}
+
+
 	
 }

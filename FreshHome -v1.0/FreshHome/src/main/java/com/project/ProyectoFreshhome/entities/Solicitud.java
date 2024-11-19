@@ -16,7 +16,7 @@ public class Solicitud {
 	@Column(name = "fechaSolicitud", nullable = false)
 	private Date fechaSolicitud;
 
-	@Column(name = "nombreCliente", nullable = false)
+	@Column(name = "nombreCliente", nullable = false,length = 50)
 	private String nombreCliente;
 
 	@Column(name = "direccionCliente", nullable = false)
@@ -28,12 +28,12 @@ public class Solicitud {
 	
 	//Relacion de IdCliente con la clase cliente.
 	@ManyToOne
-	@JoinColumn(name = "idCliente", nullable = false)
+	@JoinColumn(name = "IdCliente", nullable = false)
 	private Cliente cliente;
 	
 	//Relacion de IdEmpleado con la clase empleado
 	@ManyToOne
-	@JoinColumn(name = "idEmpleado", nullable = false)
+	@JoinColumn(name = "IdEmpleado", nullable = false)
 	private Empleado empleado;
 	
 	//Relacion de IdPago con la clase Pago
@@ -44,13 +44,13 @@ public class Solicitud {
 	@Column(name = "CalificacionCliente", nullable = false)
 	private int calificacionCliente;
 
-	@Column(name = "ObservacioneCliente", nullable = false)
+	@Column(name = "ObservacioneCliente", nullable = false,length = 200)
 	private String observacioneCliente;
 
 	@Column(name = "CalificacionEmpleado", nullable = false)
 	private int calificacionEmpleado;
 
-	@Column(name = "ObservacioneEmpleado", nullable = false)
+	@Column(name = "ObservacioneEmpleado", nullable = false,length = 200)
 	private String observacioneEmpleado;
 
 	//Constructores
@@ -141,6 +141,9 @@ public class Solicitud {
 
 	public void setIdCliente(Cliente cliente) {
 		this.cliente = cliente;
+		if (cliente!=null) {
+			cliente.getSolicitudes().add(this);
+		}
 	}
 
 
@@ -182,6 +185,9 @@ public class Solicitud {
 
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
+		if (empleado!=null) {
+			empleado.getSolicitudes().add(this);
+		}
 	}
 
 	public Pago getPago() {

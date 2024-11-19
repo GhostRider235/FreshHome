@@ -1,7 +1,5 @@
 package com.project.ProyectoFreshhome.entities;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import jakarta.persistence.*;
 
@@ -12,26 +10,26 @@ public class Habilidad {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idHabilidad;
 
-	@Column(name = "Habilidad", nullable = false, length = 50)
+	@Column(name = "Habilidad", nullable = false, length = 255)
 	private String habilidad;
 
-	@Column(name = "IdEmpleado")
-	private int idEmpleado;
 	
 	//Relacion con empleados
-	@ManyToMany(mappedBy = "Habilidades",cascade = CascadeType.ALL)
-	private Set<Empleado> Empleados = new HashSet<>();
+	@ManyToOne
+	@JoinColumn(name = "IdEmpleado", nullable = false)
+	private Empleado empleado;
 	
 	
 	//Constructores
-	public Habilidad(String habilidad, int idEmpleado, Set<Empleado> empleados) {
-		super();
-		this.habilidad = habilidad;
-		this.idEmpleado = idEmpleado;
-		Empleados = empleados;
-	}
+
 	public Habilidad() {
 		super();
+	}
+
+	public Habilidad(String habilidad, Empleado empleado) {
+		super();
+		this.habilidad = habilidad;
+		this.empleado = empleado;
 	}
 
 
@@ -53,11 +51,4 @@ public class Habilidad {
 		this.habilidad = habilidad;
 	}
 
-	public int getIdEmpleado() {
-		return idEmpleado;
-	}
-
-	public void setIdEmpleado(int idEmpleado) {
-		this.idEmpleado = idEmpleado;
-	}
 }

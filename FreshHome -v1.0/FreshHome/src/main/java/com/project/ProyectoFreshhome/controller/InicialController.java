@@ -1,5 +1,5 @@
 package com.project.ProyectoFreshhome.controller;
 
-public class ClienteController {
-	
+public class InicialController {
+
 }
