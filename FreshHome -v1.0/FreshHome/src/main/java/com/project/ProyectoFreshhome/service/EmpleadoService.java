@@ -6,8 +6,8 @@ import java.util.Optional;
 import com.project.ProyectoFreshhome.entities.Empleado;
 
 public interface EmpleadoService {
-    List<Empleado> findAll();
-    Optional<Empleado> findById(int id);
-    Empleado save(Empleado empleado);
-    void deleteById(int id);
+    List<Empleado> mostrarEmpleados();
+    Optional<Empleado> buscarEmpleado(int id);
+    Empleado agregar(Empleado empleado);
+    void eliminar(int id);
 }

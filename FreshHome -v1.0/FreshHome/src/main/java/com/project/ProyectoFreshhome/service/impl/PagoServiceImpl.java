@@ -1,37 +1,40 @@
 package com.project.ProyectoFreshhome.service.impl;
 
-import com.project.ProyectoFreshhome.entities.Pago;
-import com.project.ProyectoFreshhome.repository.PagoRepository;
-import com.project.ProyectoFreshhome.service.PagoService;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.project.ProyectoFreshhome.entities.Pago;
+import com.project.ProyectoFreshhome.repository.PagoRepository;
+import com.project.ProyectoFreshhome.service.PagoService;
 
 @Service
 public class PagoServiceImpl implements PagoService {
 
-    @Autowired
-    private PagoRepository pagoRepository;
+	    @Autowired
+	    private PagoRepository pagoRepository;
 
-    @Override
-    public List<Pago> findAll() {
-        return pagoRepository.findAll();
-    }
+	    @Override
+	    public List<Pago> mostrarPagos() {
+	        return pagoRepository.findAll();
+	    }
 
-    @Override
-    public Optional<Pago> findById(int id) {
-        return pagoRepository.findById(id);
-    }
 
-    @Override
-    public Pago save(Pago pago) {
-        return pagoRepository.save(pago);
-    }
+	    @Override
+	    public Pago agregar(Pago pago) {
+	        return pagoRepository.save(pago);
+	    }
 
-    @Override
-    public void deleteById(int id) {
-        pagoRepository.deleteById(id);
-    }
+	    @Override
+	    public void eliminar(int id) {
+	        pagoRepository.deleteById(id);
+	    }
+
+		@Override
+		public Optional<Pago> buscarPago(int id) {
+	        return pagoRepository.findById(id);
+		}
+	
 }

@@ -6,8 +6,8 @@ import java.util.Optional;
 import com.project.ProyectoFreshhome.entities.Cliente;
 
 public interface ClienteService {
-    List<Cliente> findAll();
-    Optional<Cliente> findById(int id);
-    Cliente save(Cliente cliente);
-    void deleteById(int id);
+    List<Cliente> mostrarClientes();
+    Optional<Cliente> buscarCliente(int id);
+    Cliente agregar(Cliente cliente);
+    void eliminar(int id);
 }

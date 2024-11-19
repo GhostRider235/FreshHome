@@ -16,22 +16,22 @@ public class HabilidadServiceImpl implements HabilidadService {
     private HabilidadRepository habilidadRepository;
 
     @Override
-    public List<Habilidad> findAll() {
+    public List<Habilidad> mostrarHabilidades() {
         return habilidadRepository.findAll();
     }
 
     @Override
-    public Optional<Habilidad> findById(int id) {
+    public Optional<Habilidad> buscarHabilidad(int id) {
         return habilidadRepository.findById(id);
     }
 
     @Override
-    public Habilidad save(Habilidad habilidad) {
+    public Habilidad agregar(Habilidad habilidad) {
         return habilidadRepository.save(habilidad);
     }
 
     @Override
-    public void deleteById(int id) {
+    public void eliminar(int id) {
         habilidadRepository.deleteById(id);
     }
 }

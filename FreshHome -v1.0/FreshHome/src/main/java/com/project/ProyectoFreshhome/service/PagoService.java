@@ -6,9 +6,9 @@ import java.util.Optional;
 import com.project.ProyectoFreshhome.entities.Pago;
 
 public interface PagoService {
-    List<Pago> findAll();
-    Optional<Pago> findById(int id);
-    Pago save(Pago pago);
-    void deleteById(int id);
+    List<Pago> mostrarPagos();
+    Optional<Pago> buscarPago(int id);
+    Pago agregar(Pago pago);
+    void eliminar(int id);
 }
 

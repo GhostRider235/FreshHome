@@ -16,22 +16,22 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     private EmpleadoRepository empleadoRepository;
 
     @Override
-    public List<Empleado> findAll() {
+    public List<Empleado> mostrarEmpleados() {
         return empleadoRepository.findAll();
     }
 
     @Override
-    public Optional<Empleado> findById(int id) {
+    public Optional<Empleado> buscarEmpleado(int id) {
         return empleadoRepository.findById(id);
     }
 
     @Override
-    public Empleado save(Empleado empleado) {
+    public Empleado agregar(Empleado empleado) {
         return empleadoRepository.save(empleado);
     }
 
     @Override
-    public void deleteById(int id) {
+    public void eliminar(int id) {
         empleadoRepository.deleteById(id);
     }
 }
