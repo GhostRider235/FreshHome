@@ -8,8 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.project.ProyectoFreshhome.entities.Cliente;
+import com.project.ProyectoFreshhome.entities.Empleado;
 import com.project.ProyectoFreshhome.service.ClienteService;
 import com.project.ProyectoFreshhome.service.EmpleadoService;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/auth")
@@ -24,8 +29,8 @@ public class AccountController {
 	private ClienteService client;
 
 	// Entrar al formulario de inicio de sesion
-	@GetMapping("/login")
-	public String FormularioIniciarSersion(Model m) {
+	@GetMapping("/login/c")
+	public String FormularioIniciarSersionCliente(Model m) {
 		Cliente c = new Cliente();
 		m.addAttribute("Cliente", c);
 		return "inicioCliente";
@@ -33,7 +38,7 @@ public class AccountController {
 
 	// inicio de sesion para clientes
 	// Formulario de registro de los clientes
-	@GetMapping("/registrar")
+	@GetMapping("/registrar/C")
 	public String formularioRegistroCliente(Model m) {
 		Cliente c = new Cliente();
 		m.addAttribute("nuevoCliente", c);
@@ -52,7 +57,7 @@ public class AccountController {
 	}
 
 	// Iniciar sesion
-	@PostMapping("/iniciocliente")
+	@PostMapping("/inicioCliente")
 	public String inicioCliente(@RequestBody Cliente cliente, Model m) {
 		Cliente c = client.login(cliente.getContrasena(), cliente.getContrasena());
 		if (!(c == null)) {
@@ -67,9 +72,64 @@ public class AccountController {
 		return "errorInicio";
 	}
 
+	// mostrar el perfil del cliente
+	@GetMapping("/perfil/{cliente}")
+	public String verPerfil(Model m, @PathVariable("cliente") Cliente cli) {
+		m.addAttribute("Cliente", cli);
+		return "perfilCliente";
+	}
+
 	// SECCION DE EMPLEADOS
 
 	@Autowired
-	private EmpleadoService empler;
+	private EmpleadoService emplent;
+
+	// formulario de registro de empleados formulario
+	@GetMapping("/registrar/E")
+	public String formularioRegistroEmpleado(Model m) {
+		Empleado e = new Empleado();
+		m.addAttribute("nuevoEmpleado", e);
+		return "registrarEmpleado";
+	}
+
+	// registrar el cliente nuevo
+	@PostMapping("/registrarEmpleado")
+	public String Registrar(@ModelAttribute("emp") Empleado e, Model m) {
+		if (e == null) {
+			m.addAttribute("error", "No se pudo registrar");
+		}
+		emplent.agregar(e);
+		return "redirect:/perfil";
+	}
+
+	// ver el perfil del empleado
+	@GetMapping("/perfil/{empleado}")
+	public String verPerfil(Model m, HttpServletRequest r,@PathVariable("empleado") Empleado empl) {
+		m.addAttribute("cliente", empl);
+		return "perfilEmpleado";
+	}
+
+	// Entrar al formulario de inicio de sesion
+	@GetMapping("/login/e")
+	public String FormularioIniciarSersionEmpleado(Model m) {
+		Empleado e = new Empleado();
+		m.addAttribute("empleado", e);
+		return "inicioEmpleado";
+	}
+
+	// Iniciar sesion
+	@PostMapping("/inicioEmpleado")
+	public String inicioCliente(@RequestBody Empleado empleado, Model m) {
+		Empleado e = emplent.login(empleado.getContrasena(), empleado.getContrasena());
+		if (!(e == null)) {
+			String token = emplent.token(empleado);
+			String Respuesta = "{\"token\": \"" + token + "\"}";
+			ResponseEntity.ok(Respuesta);
+			return "redirect:/inicioCliente";
+		}
+		ResponseEntity.status(401).body("Credenciales incorrectas");
+		m.addAttribute("error", "Credenciales incorrectas");
+		return "errorInicio";
+	}
 
 }

@@ -38,62 +38,7 @@ public class EmpleadoController {
 		return "tablaEmpleado";
 	}
 	
-	//formulario de registro de empleados formulario
-	@GetMapping("/registrar")
-	public String formularioRegistroCliente(Model m) {
-		Empleado e = new Empleado();
-		m.addAttribute("nuevoEmpleado",e);
-		return "registrarEmpleado";
-	}
 	
-	//registrar el cliente nuevo
-	@GetMapping("/registrarEmpleado")
-	public String Registrar(@ModelAttribute("emp") Empleado e, Model m) {
-		if (e==null) {
-			m.addAttribute("error","No se pudo registrar");
-		}
-		emplent.agregar(e);
-		return "redirect:/perfil";
-	}
-	
-	//ver el perfil del empleado
-	@GetMapping("/perfil")
-	public String verPerfil(Model m,HttpServletRequest r) {
-		//obtener el token
-		String token = r.getHeader("Authorization").substring(7);
-				
-		//Desifrar el token
-		Claims cl = Jwts.parser().setSigningKey(clave).parseClaimsJws(token).getBody();
-		int empleadoId = Integer.valueOf(cl.getId().toString());
-				
-		//Buscar el empleado
-		Empleado emp = emplent.buscarEmpleado(empleadoId).orElseThrow(()->new RuntimeException("no se encontro")); 
-		m.addAttribute("cliente",emp);
-		return "perfilEmpleado";
-	}
-	
-	//Entrar al formulario de inicio de sesion
-	@GetMapping("/login")
-	public String FormularioIniciarSersion(Model m) {
-		Empleado e = new Empleado();
-		m.addAttribute("empleado",e);
-		return "inicioEmpleado";
-	}
-		
-	//Iniciar sesion 
-	@PostMapping("/iniciocliente")
-	public String inicioCliente(@RequestBody Empleado empleado, Model m) {
-		Empleado e = emplent.login(empleado.getContrasena(), empleado.getContrasena());
-		if (!(e==null)) {
-			String token = emplent.token(empleado);
-			String Respuesta = "{\"token\": \"" + token +"\"}";
-			ResponseEntity.ok(Respuesta);
-			return "redirect:/inicioCliente";
-		}
-		ResponseEntity.status(401).body("Credenciales incorrectas");
-		m.addAttribute("error","Credenciales incorrectas");
-		return "errorInicio";
-		}
 	
 	
 	

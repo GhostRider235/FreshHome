@@ -48,40 +48,10 @@ public class ClienteController {
 	
 	
 	
-	//mostrar el perfil de la persona
-	@GetMapping("/perfil/{cliente}")
-	public String verPerfil(Model m,HttpServletRequest r,@ModelAttribute("cliente") Cliente cli) {
-		//obtener el token
-		String token = r.getHeader("Authorization").substring(7);
-		
-		//Desifrar el token
-		Claims cl = Jwts.parser().setSigningKey(clave).parseClaimsJws(token).getBody();
-		int clienteId = Integer.valueOf(cl.getId().toString());
-		
-		//Buscar el empleado
-		Cliente c = client.buscarCliente(clienteId).orElseThrow(()->new RuntimeException("no se encontro")); 
-		m.addAttribute("Cliente",c);
-		return "perfilCliente";
-	}
 	
 	
 	
 	
-	//Iniciar sesion 
-	@PostMapping("/iniciocliente")
-	public String inicioCliente(@RequestBody Cliente cliente, Model m) {
-		Cliente c = client.login(cliente.getContrasena(), cliente.getContrasena());
-		if (!(c==null)) {
-			String token = client.token(cliente);
-			String Respuesta = "{\"token\": \"" + token +"\"}";
-			ResponseEntity.ok(Respuesta);
-			m.addAttribute("Cliente",cliente);
-			return "redirect:/inicioCliente";
-		}
-		ResponseEntity.status(401).body("Credenciales incorrectas");
-		m.addAttribute("error","Credenciales incorrectas");
-		return "errorInicio";
-	}
 	
 	
 	
