@@ -17,39 +17,39 @@ import java.util.*;
 public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Autowired
-    private EmpleadoRepository empleadoRepository;
+    private EmpleadoRepository rep;
     
     @Value("${jwt.secret}")
     private String firmaAutorizada = "gtu98#4n6$fr&d/23";
 
     @Override
     public List<Empleado> mostrarEmpleados() {
-        return empleadoRepository.findAll();
+        return rep.findAll();
     }
 
     @Override
     public Optional<Empleado> buscarEmpleado(int id) {
-        return empleadoRepository.findById(id);
+        return rep.findById(id);
     }
 
     @Override
     public Empleado agregar(Empleado empleado) {
-        return empleadoRepository.save(empleado);
+        return rep.save(empleado);
     }
 
     @Override
     public void eliminar(int id) {
-        empleadoRepository.deleteById(id);
+        rep.deleteById(id);
     }
 
 	@Override
 	public int tamaño() {
-		return (int) empleadoRepository.count();
+		return (int) rep.count();
 	}
 
 	@Override
 	public Empleado login(String correo, String contraseña) {
-		Empleado empleado = empleadoRepository.findByCorreo(correo).
+		Empleado empleado = rep.findByCorreo(correo).
 				orElseThrow(()-> new RuntimeException("No se encotnro el usuario."));
 		if (!(contraseña.equals(empleado.getContrasena()))) {
 			throw new RuntimeException("La contraseña es incorrecta.");
