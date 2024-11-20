@@ -1,12 +1,19 @@
 package com.project.ProyectoFreshhome.controller;
 
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.project.ProyectoFreshhome.entities.Cliente;
+import com.project.ProyectoFreshhome.entities.Pago;
+import com.project.ProyectoFreshhome.entities.Solicitud;
 import com.project.ProyectoFreshhome.service.ClienteService;
 
 import io.jsonwebtoken.Claims;
@@ -14,6 +21,9 @@ import io.jsonwebtoken.Jwts;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -34,24 +44,7 @@ public class ClienteController {
 		return "tablaClientes";
 	}
 	
-	//Formulario de registro de los clientes
-	@GetMapping("/registrar")
-	public String formularioRegistroCliente(Model m) {
-		Cliente c = new Cliente();
-		m.addAttribute("nuevoCliente",c);
-		return "registrarCliente";
-	}
 	
-	//registrar el cliente nuevo
-	@GetMapping("/registrarCliente")
-	public String Registrar(@ModelAttribute("Cliente") Cliente c, Model m) {
-		if (c==null) {
-			m.addAttribute("error","No se pudo registrar");
-		}
-		client.agregar(c);
-		m.addAttribute("cliente",c);
-		return "redirect:/perfil/{Cliente}";
-	}
 	
 	
 	
@@ -72,13 +65,6 @@ public class ClienteController {
 	}
 	
 	
-	//Entrar al formulario de inicio de sesion
-	@GetMapping("/login")
-	public String FormularioIniciarSersion(Model m) {
-		Cliente c = new Cliente();
-		m.addAttribute("cliente",c);
-		return "inicioCliente";
-	}
 	
 	
 	//Iniciar sesion 
@@ -96,6 +82,7 @@ public class ClienteController {
 		m.addAttribute("error","Credenciales incorrectas");
 		return "errorInicio";
 	}
+	
 	
 	
 }

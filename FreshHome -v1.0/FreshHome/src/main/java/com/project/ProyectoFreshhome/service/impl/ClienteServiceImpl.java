@@ -37,11 +37,6 @@ public class ClienteServiceImpl implements ClienteService {
         return rep.save(cliente);
     }
 
-    @Override
-    public void eliminar(int id) {
-    	rep.deleteById(id);
-    }
-
 	@Override
 	public int tamaño() {
 		return (int) rep.count();
@@ -70,6 +65,16 @@ public class ClienteServiceImpl implements ClienteService {
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 horas
                 .signWith(SignatureAlgorithm.HS256, firmaAutorizada)
                 .compact();
+	}
+
+	@Override
+	public Cliente Actualizardatos(Cliente cliente) {
+		return rep.save(cliente);
+	}
+
+	@Override
+	public void eliminar(Cliente cliente) {
+		rep.deleteById(cliente.getIdCliente());
 	}
 	
 	

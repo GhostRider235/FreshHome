@@ -10,8 +10,10 @@ public interface EmpleadoService {
     List<Empleado> mostrarEmpleados();
     Optional<Empleado> buscarEmpleado(int id);
     Empleado agregar(Empleado empleado);
-    void eliminar(int id);
+    void eliminar(Empleado emppleado);
     int tamaño();
     Empleado login(String correo,String contraseña);
     String token(Empleado empleado);
+    Empleado actualizar(Empleado empleado);
+    
 }

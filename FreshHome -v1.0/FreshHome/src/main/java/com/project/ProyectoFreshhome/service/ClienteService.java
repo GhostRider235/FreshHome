@@ -9,8 +9,9 @@ public interface ClienteService {
     List<Cliente> mostrarClientes();
     Optional<Cliente> buscarCliente(int id);
     Cliente agregar(Cliente cliente);
-    void eliminar(int id);
     int tamaño();
     Cliente login(String correo,String contraseña);
     String token(Cliente cliente);
+    Cliente Actualizardatos(Cliente cliente);
+    void eliminar(Cliente cliente);
 }

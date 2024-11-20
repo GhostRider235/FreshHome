@@ -38,8 +38,8 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     }
 
     @Override
-    public void eliminar(int id) {
-        rep.deleteById(id);
+    public void eliminar(Empleado empleado) {
+        rep.deleteById(empleado.getIdEmpleado());
     }
 
 	@Override
@@ -70,5 +70,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 horas
                 .signWith(SignatureAlgorithm.HS256, firmaAutorizada)
                 .compact();
+	}
+
+	@Override
+	public Empleado actualizar(Empleado empleado) {
+		rep.save(empleado);
+		return null;
 	}
 }

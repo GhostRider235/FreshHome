@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.ProyectoFreshhome.entities.Empleado;
+import com.project.ProyectoFreshhome.entities.Solicitud;
 import com.project.ProyectoFreshhome.service.EmpleadoService;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/app/emp")
@@ -91,5 +94,8 @@ public class EmpleadoController {
 		m.addAttribute("error","Credenciales incorrectas");
 		return "errorInicio";
 		}
+	
+	
+	
 		
 }
