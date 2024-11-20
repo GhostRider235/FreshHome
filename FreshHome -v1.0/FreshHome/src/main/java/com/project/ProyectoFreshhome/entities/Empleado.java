@@ -1,6 +1,8 @@
 package com.project.ProyectoFreshhome.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 import jakarta.persistence.*;
 
@@ -24,7 +26,7 @@ public class Empleado {
 	private int anosExperiencia;
 
 	@Column(name = "edad", nullable = false)
-	private int edad;
+	private int edad = this.getEdad();
 
 	@Column(name = "CalificacionEmpleado", nullable = false)
 	private int calificacionEmpleado;
@@ -47,20 +49,18 @@ public class Empleado {
 	}
 
 
-	public Empleado(String nombreEmpleado, String correo, Date fechaNacimiento, int anosExperiencia, int edad,
-			int calificacionEmpleado, String contrasena, List<Solicitud> solicitudes, Set<Habilidad> habilidades) {
+	public Empleado(String nombreEmpleado, String correo, Date fechaNacimiento, int anosExperiencia,
+			int calificacionEmpleado, String contrasena, Set<Habilidad> habilidades) {
 		super();
 		this.nombreEmpleado = nombreEmpleado;
-		this.correo = correo;
+		this.correo = correo.toLowerCase();
 		this.fechaNacimiento = fechaNacimiento;
 		this.anosExperiencia = anosExperiencia;
-		this.edad = edad;
+		this.edad = getEdad();
 		this.calificacionEmpleado = calificacionEmpleado;
 		this.contrasena = contrasena;
-		this.solicitudes = solicitudes;
 		this.habilidades = habilidades;
 	}
-
 
 	// Getters y setters
 	public int getIdEmpleado() {
@@ -103,11 +103,12 @@ public class Empleado {
 	}
 
 	public int getEdad() {
-		return edad;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
+		if (fechaNacimiento == null) {
+			return 0;
+		}
+		LocalDate fechaAhora = LocalDate.now();
+		LocalDate fechaNacimientoE = fechaNacimiento.toLocalDate();
+		return Period.between(fechaNacimientoE,fechaAhora).getYears();
 	}
 
 	public int getCalificacionEmpleado() {

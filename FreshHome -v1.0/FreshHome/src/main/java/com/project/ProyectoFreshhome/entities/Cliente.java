@@ -1,6 +1,8 @@
 package com.project.ProyectoFreshhome.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,27 +35,27 @@ public class Cliente {
 
 	@Column(name = "Contraseña", nullable = false, length = 255)
 	private String contrasena;
-	
-	//Cuando es una relacion de uno a muchos en la que hace de uno se crea una lista
-	//con objetos de la otra clase que hace de muchos.
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Solicitud> solicitudes = new ArrayList<>(); 
 
-	
-	//Constructores
+	// Cuando es una relacion de uno a muchos en la que hace de uno se crea una
+	// lista
+	// con objetos de la otra clase que hace de muchos.
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Solicitud> solicitudes = new ArrayList<>();
+
+	// Constructores
 	public Cliente() {
 		super();
 	}
 
-	public Cliente(String nombreCliente, String correo, Date fechaNacimiento, int edad, String direccionCliente,
+	public Cliente(String nombreCliente, String correo, Date fechaNacimiento, String direccionCliente,
 			int calificacionCliente, String contrasena) {
 		super();
 		this.nombreCliente = nombreCliente;
-		this.correo = correo;
+		this.correo = correo.toLowerCase();
 		this.fechaNacimiento = fechaNacimiento;
-		this.edad = edad;
 		this.direccionCliente = direccionCliente;
 		this.calificacionCliente = calificacionCliente;
+		this.edad = getEdad();
 		this.contrasena = contrasena;
 	}
 
@@ -91,11 +93,12 @@ public class Cliente {
 	}
 
 	public int getEdad() {
-		return edad;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
+		if (fechaNacimiento == null) {
+			return 0;
+		}
+		LocalDate fechaAhora = LocalDate.now();
+		LocalDate fechaNacimientoC = fechaNacimiento.toLocalDate();
+		return Period.between(fechaNacimientoC, fechaAhora).getYears();
 	}
 
 	public String getDireccionCliente() {
@@ -130,6 +133,4 @@ public class Cliente {
 		this.solicitudes = solicitudes;
 	}
 
-
-	
 }

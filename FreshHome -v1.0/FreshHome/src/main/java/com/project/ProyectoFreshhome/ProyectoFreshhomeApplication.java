@@ -28,12 +28,21 @@ public class ProyectoFreshhomeApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		//Casting de LocalDate a Date
+		
+		
+		/*
+		
+		 //Casting de LocalDate a Date
 		LocalDate f = LocalDate.of(2000, Month.AUGUST, 5);
 		Date d = Date.valueOf(f);
 		
 		//Obejto de ejemplo
-		Cliente c = new Cliente("Luis", "Luchomaniaco@outlook.es",d, 15, "", 0, "tupac");
+		Cliente c = new Cliente("Juan","Juanse@gmail.com",d,"San pedro",0,"tupac");
 		
+		this.re.save(c);
+		 
+		 */
+		
+		  
 	}
 }

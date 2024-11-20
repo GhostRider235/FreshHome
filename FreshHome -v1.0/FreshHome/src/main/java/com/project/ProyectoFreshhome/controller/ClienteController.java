@@ -1,14 +1,15 @@
 package com.project.ProyectoFreshhome.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 
+import com.project.ProyectoFreshhome.entities.Cliente;
 import com.project.ProyectoFreshhome.service.ClienteService;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import ch.qos.logback.core.net.server.Client;
+
+import org.springframework.web.bind.annotation.*;
 
 
 
@@ -26,22 +27,53 @@ public class ClienteController {
 	
 	//Formulario de registro de los clientes
 	@GetMapping("/registrar")
-	public String getMethodName(Model m) {
-		m.addAttribute("clienteNuevo");
+	public String formularioRegistroCliente(Model m) {
+		Cliente c = new Cliente();
+		m.addAttribute("nuevoCliente",c);
 		return "registrarCliente";
 	}
 	
+	@GetMapping("/registrar/r")
+	public String Registrar(@ModelAttribute Cliente c, Model m) {
+		if (c==null) {
+			m.addAttribute("error","No se pudo registrar");
+		}
+		client.agregar(c);
+		return "redirect:/perfil";
+	}
+	
+	
+	
+	//mostrar el perfil de la persona
 	@GetMapping("/perfil")
-	public String getMethodName(@RequestParam String param) {
+	public String verPerfil(Model m) {
+		m.addAttribute("cliente",client.buscarCliente(0));
 		return "perfilCliente";
 	}
 	
 	
-	@PostMapping("/")
-	public String postMethodName(@RequestBody String entity) {
-		//TODO: process POST request
-		
-		return "redirect:/perfil";
+	//Entrar al formulario de Registro
+	@GetMapping("/inicioCliente")
+	public String FormularioIniciarSersion(Model m) {
+		Cliente c = new Cliente();
+		m.addAttribute("cliente",c);
+		return "inicioCliente";
+	}
+	
+	
+	//Iniciar sesion
+	@PostMapping("/login")
+	public String inicioCliente(@RequestBody Cliente cliente, Model m) {
+		Cliente c = client.login(cliente.getContrasena(), cliente.getContrasena());
+		if (!(c==null)) {
+			String token = client.token(cliente);
+			String Respuesta = "{\"token\": \"" + token +"\"}";
+			ResponseEntity.ok(Respuesta);
+			return "redirect:/inicioCliente";
+		}
+		ResponseEntity.status(401).body("Credenciales incorrectas");
+		m.addAttribute("error","Credenciales incorrectas");
+		return "errorInicio";
 	}
 	
 	

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.project.ProyectoFreshhome.entities.Cliente;
 import com.project.ProyectoFreshhome.entities.Solicitud;
+import com.project.ProyectoFreshhome.repository.ClienteRepository;
 import com.project.ProyectoFreshhome.repository.SolicitudRepository;
 import com.project.ProyectoFreshhome.service.impl.ClienteServiceImpl;
 import com.project.ProyectoFreshhome.service.impl.SolicitudServiceImpl;
@@ -24,7 +25,7 @@ public class SolicitudController {
 	
 	//Este objeto es para manejar los clientes
 	@Autowired
-	private ClienteServiceImpl servC;
+	private ClienteRepository servC;
 	
 
 	//Para ver solicitudes del cliente

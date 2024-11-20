@@ -10,4 +10,7 @@ public interface ClienteService {
     Optional<Cliente> buscarCliente(int id);
     Cliente agregar(Cliente cliente);
     void eliminar(int id);
+    int tamaño();
+    Cliente login(String correo,String contraseña);
+    String token(Cliente cliente);
 }
