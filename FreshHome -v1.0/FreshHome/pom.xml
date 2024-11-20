@@ -35,6 +35,11 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- Thymeleaf Dependency -->
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 
         <!-- Spring Boot JPA Dependency -->
         <dependency>

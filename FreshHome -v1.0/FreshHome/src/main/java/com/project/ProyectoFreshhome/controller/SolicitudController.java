@@ -35,7 +35,7 @@ public class SolicitudController {
 	}
 	
 	//Ingresar al formulario de creacion de solicitud
-	@PostMapping("/cliente/{Cliente}/Solicitudes}/formulario")
+	@PostMapping("/cliente/{Cliente}/{Solicitud}/formulario")
 	public String CrearSolicitud(Model m,@PathVariable Cliente client,@PathVariable Solicitud sol) {
 		
 		m.addAttribute("nuevaSolicitud",sol);

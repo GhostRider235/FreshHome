@@ -29,9 +29,8 @@ public class ProyectoFreshhomeApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		//Casting de LocalDate a Date
-		ZoneId zone  = ZoneId.systemDefault();
 		LocalDate f = LocalDate.of(2000, Month.AUGUST, 5);
-		Date d = (Date) Date.from(f.atStartOfDay(zone).toInstant());
+		Date d = Date.valueOf(f);
 		
 		//Obejto de ejemplo
 		Cliente c = new Cliente("Luis", "Luchomaniaco@outlook.es",d, 15, "", 0, "tupac");
