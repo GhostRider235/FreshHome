@@ -17,13 +17,12 @@ public class configuracion {
         return http
                 .formLogin(form -> form.loginPage("/inicioCliente"))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/InicioEmpleado").permitAll()
-                        .requestMatchers("/registrarCliente").permitAll()
-                        .requestMatchers("/registrarEmpleado").permitAll()
+                        .requestMatchers("/auth/**","/auth/registrar/E","/auth/registrar/C","/auth/rol","/rol/reg").permitAll()
                         .requestMatchers("/css/**", "/img/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
+                		.loginPage("/auth/login/c")
                         .defaultSuccessUrl("/", true)
                 )
                 .logout(config -> config.logoutSuccessUrl("/"))

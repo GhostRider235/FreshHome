@@ -15,6 +15,9 @@ import com.project.ProyectoFreshhome.service.EmpleadoService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/auth")
@@ -22,6 +25,17 @@ public class AccountController {
 
 	@Value("${jwt.secret}")
 	private String firmaAutorizada = "gtu98#4n6$fr&d/23";
+	
+	@GetMapping("/rol")
+	public String Direccionar() {
+		return "roles";
+	}
+	
+	@GetMapping("/rol/reg")
+	public String RegistroRol() {
+		return "rolesRegistr";
+	}
+	
 
 	// SECCION DE CLIENTES
 
@@ -33,7 +47,7 @@ public class AccountController {
 	public String FormularioIniciarSersionCliente(Model m) {
 		Cliente c = new Cliente();
 		m.addAttribute("Cliente", c);
-		return "inicioCliente";
+		return "inicioSesion";
 	}
 
 	// inicio de sesion para clientes
@@ -114,7 +128,7 @@ public class AccountController {
 	public String FormularioIniciarSersionEmpleado(Model m) {
 		Empleado e = new Empleado();
 		m.addAttribute("empleado", e);
-		return "inicioEmpleado";
+		return "InicioSesion";
 	}
 
 	// Iniciar sesion
