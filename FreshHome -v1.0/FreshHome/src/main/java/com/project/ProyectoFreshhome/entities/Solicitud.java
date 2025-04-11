@@ -24,6 +24,12 @@ public class Solicitud {
 
 	@Column(name = "tarifa", nullable = false)
 	private int tarifa;
+	
+	@Column(name = "ocupados", nullable = true)
+	private boolean ocupado;
+	
+	@Column(name = "disponibilidad",nullable = true)
+	private boolean disponibilidad;
 
 	
 	//Relacion de IdCliente con la clase cliente.

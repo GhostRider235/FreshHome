@@ -108,7 +108,7 @@ public class AccountController {
 
 	// registrar el cliente nuevo
 	@PostMapping("/registrarEmpleado")
-	public String Registrar(@ModelAttribute("emp") Empleado e, Model m) {
+	public String Registrar(@ModelAttribute("nuevoEmpleado") Empleado e, Model m) {
 		if (e == null) {
 			m.addAttribute("error", "No se pudo registrar");
 		}
