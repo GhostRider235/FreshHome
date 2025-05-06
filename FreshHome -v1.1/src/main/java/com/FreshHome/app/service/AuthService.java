@@ -22,91 +22,82 @@ import com.FreshHome.app.repository.UsuarioRepository;
 import com.FreshHome.app.repository.UsuarioSesionesRepository;
 
 @Service
-public class AuthService implements UserDetailsServiceCustom{
-	
+public class AuthService implements UserDetailsServiceCustom {
+
 	@Autowired
 	private UsuarioSesionesRepository repSQL;
-	
+
 	@Autowired
 	private UsuarioRepository repNoSQL;
-	
+
 	@Autowired
 	private PasswordEncoder password;
-	
+
 	@Autowired
 	private HabilidadesRepository h;
-	
-
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UsuarioSesiones user = repSQL.findByemail(username).orElseThrow(()-> new UsernameNotFoundException("Usuario no encontrado"));
+		UsuarioSesiones user = repSQL.findByemail(username)
+				.orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 		String autoridad = user.getAuthorities().stream().findFirst().map(GrantedAuthority::getAuthority).orElse(null);
-		return User
-				.withUsername(user.getEmail())
-				.password(user.getPassword())
-				.roles(autoridad)
-				.build();
+		return User.withUsername(user.getEmail()).password(user.getPassword()).roles(autoridad).build();
 	}
 
 	@Override
 	public UsuarioSesiones registrarUsuarioCliente(usuarioDTO user) {
-		//objeto del nuevo usuario en Posgre (SQL)
+		// objeto del nuevo usuario en Posgre (SQL)
 		UsuarioSesiones u = new UsuarioSesiones();
-		
-		//Objeto del nuevo usuario en Mongo (no SQL)
+
+		// Objeto del nuevo usuario en Mongo (no SQL)
 		UsuarioEntity us = new UsuarioEntity();
 		HabilidadesEntity h = new HabilidadesEntity();
-		
-		//Guardar en Mongo
+
+		// Guardar en Mongo
 		us.setContraseña(password.encode(user.getPassword()));
 		us.setCorreo(user.getEmail());
 		us.setDireccion(user.getDireccion());
-		us.setEdad((int)ChronoUnit.YEARS.between(user.getFechaNacimiento(), LocalDateTime.now()));
-		us.setNombre(user.getNombre());	
+		us.setEdad((int) ChronoUnit.YEARS.between(user.getFechaNacimiento(), LocalDateTime.now()));
+		us.setNombre(user.getNombre());
 		us.setUserIdSql(u.getId());
-		
-		//Guardar en Posgre
+
+		// Guardar en Posgre
 		u.setEmail(user.getEmail());
 		u.setNombre(user.getNombre());
 		u.setPassword(password.encode(user.getPassword()));
 		u.setRol(user.getRol());
-		
+
 		repNoSQL.save(us);
 		return repSQL.save(u);
 	}
 
 	@Override
 	public UsuarioSesiones registrarUsuarioEmpleado(usuarioDTO user) {
-		//objeto del nuevo usuario en Posgre (SQL)
-				UsuarioSesiones u = new UsuarioSesiones();
-				
-				//Objeto del nuevo usuario en Mongo (no SQL)
-				UsuarioEntity us = new UsuarioEntity();
-				HabilidadesEntity h = new HabilidadesEntity();
-				
-				//Guardar en Mongo
-				us.setContraseña(password.encode(user.getPassword()));
-				us.setCorreo(user.getEmail());
-				us.setDireccion(user.getDireccion());
-				us.setEdad((int)ChronoUnit.YEARS.between(user.getFechaNacimiento(), LocalDateTime.now()));
-				us.setNombre(user.getNombre());	
-				us.setUserIdSql(u.getId());
-				
-				//Agregar habilidades
-				
-				
-				//Guardar en Posgre
-				u.setEmail(user.getEmail());
-				u.setNombre(user.getNombre());
-				u.setPassword(password.encode(user.getPassword()));
-				u.setRol(user.getRol());
-				
-				repNoSQL.save(us);
-				return repSQL.save(u);		
+		// objeto del nuevo usuario en Posgre (SQL)
+		UsuarioSesiones u = new UsuarioSesiones();
+
+		// Objeto del nuevo usuario en Mongo (no SQL)
+		UsuarioEntity us = new UsuarioEntity();
+		HabilidadesEntity h = new HabilidadesEntity();
+
+		// Guardar en Mongo
+		us.setContraseña(password.encode(user.getPassword()));
+		us.setCorreo(user.getEmail());
+		us.setDireccion(user.getDireccion());
+		us.setEdad((int) ChronoUnit.YEARS.between(user.getFechaNacimiento(), LocalDateTime.now()));
+		us.setNombre(user.getNombre());
+		us.setUserIdSql(u.getId());
+
+		// Agregar habilidades
+
+		// Guardar en Posgre
+		u.setEmail(user.getEmail());
+		u.setNombre(user.getNombre());
+		u.setPassword(password.encode(user.getPassword()));
+		u.setRol(user.getRol());
+
+		repNoSQL.save(us);
+		return repSQL.save(u);
 	}
-	
-	
-	
-	
+
 }
