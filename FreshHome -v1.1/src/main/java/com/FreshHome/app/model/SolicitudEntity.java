@@ -24,10 +24,10 @@ import java.util.*;
  * Collection: solicitud
  * Language: Java
  * Template: Spring Data
- * Generated on 2025-04-27
+ * Generated on 2025-05-06
  */
 @JsonTypeName("solicitud")
-@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-04-27T21:22:15.105292300-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("solicitud")
+@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-05-06T16:31:27.524817900-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("solicitud")
 public class SolicitudEntity {
 
   @BsonProperty("_id")
@@ -72,6 +72,9 @@ public class SolicitudEntity {
 
   @BsonProperty("direccion")
   private String direccion;
+
+  @BsonProperty("titulo")
+  private String titulo;
 
   @BsonProperty("pago")
   private SolicitudPagoEntity pago;
@@ -342,6 +345,25 @@ public class SolicitudEntity {
     this.direccion = direccion;
   }
 
+  public SolicitudEntity titulo(String titulo) {
+    this.titulo = titulo;
+    return this;
+  }
+
+  /**
+   * Get titulo
+   * @return titulo
+   */
+  
+  @JsonProperty("titulo")
+  public String getTitulo() {
+    return titulo;
+  }
+
+  public void setTitulo(String titulo) {
+    this.titulo = titulo;
+  }
+
   public SolicitudEntity pago(SolicitudPagoEntity pago) {
     this.pago = pago;
     return this;
@@ -383,12 +405,13 @@ public class SolicitudEntity {
         Objects.equals(this.observacioneEmpleado, solicitud.observacioneEmpleado) &&
         Objects.equals(this.descripcion, solicitud.descripcion) &&
         Objects.equals(this.direccion, solicitud.direccion) &&
+        Objects.equals(this.titulo, solicitud.titulo) &&
         Objects.equals(this.pago, solicitud.pago);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, calificacionCliente, calificacionEmpleado, disponibilidad, fechaSolicitud, idUsuarioAutor, idUsuarioAplicante, idSolicitud, ocupados, tarifa, observacioneCliente, observacioneEmpleado, descripcion, direccion, pago);
+    return Objects.hash(id, calificacionCliente, calificacionEmpleado, disponibilidad, fechaSolicitud, idUsuarioAutor, idUsuarioAplicante, idSolicitud, ocupados, tarifa, observacioneCliente, observacioneEmpleado, descripcion, direccion, titulo, pago);
   }
 
   @Override
@@ -409,6 +432,7 @@ public class SolicitudEntity {
     sb.append("    observacioneEmpleado: ").append(toIndentedString(observacioneEmpleado)).append("\n");
     sb.append("    descripcion: ").append(toIndentedString(descripcion)).append("\n");
     sb.append("    direccion: ").append(toIndentedString(direccion)).append("\n");
+    sb.append("    titulo: ").append(toIndentedString(titulo)).append("\n");
     sb.append("    pago: ").append(toIndentedString(pago)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -425,4 +449,3 @@ public class SolicitudEntity {
     return o.toString().replace("\n", "\n    ");
   }
 }
-
