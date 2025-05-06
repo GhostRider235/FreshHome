@@ -17,6 +17,7 @@ import com.FreshHome.app.model.HabilidadesEntity;
 import com.FreshHome.app.model.UsuarioEntity;
 import com.FreshHome.app.model.UsuarioSesiones;
 import com.FreshHome.app.model.dto.usuarioDTO;
+import com.FreshHome.app.repository.HabilidadesRepository;
 import com.FreshHome.app.repository.UsuarioRepository;
 import com.FreshHome.app.repository.UsuarioSesionesRepository;
 
@@ -31,6 +32,9 @@ public class AuthService implements UserDetailsServiceCustom{
 	
 	@Autowired
 	private PasswordEncoder password;
+	
+	@Autowired
+	private HabilidadesRepository h;
 	
 
 
@@ -74,8 +78,32 @@ public class AuthService implements UserDetailsServiceCustom{
 
 	@Override
 	public UsuarioSesiones registrarUsuarioEmpleado(usuarioDTO user) {
-		// TODO Auto-generated method stub
-		return null;
+		//objeto del nuevo usuario en Posgre (SQL)
+				UsuarioSesiones u = new UsuarioSesiones();
+				
+				//Objeto del nuevo usuario en Mongo (no SQL)
+				UsuarioEntity us = new UsuarioEntity();
+				HabilidadesEntity h = new HabilidadesEntity();
+				
+				//Guardar en Mongo
+				us.setContraseña(password.encode(user.getPassword()));
+				us.setCorreo(user.getEmail());
+				us.setDireccion(user.getDireccion());
+				us.setEdad((int)ChronoUnit.YEARS.between(user.getFechaNacimiento(), LocalDateTime.now()));
+				us.setNombre(user.getNombre());	
+				us.setUserIdSql(u.getId());
+				
+				//Agregar habilidades
+				
+				
+				//Guardar en Posgre
+				u.setEmail(user.getEmail());
+				u.setNombre(user.getNombre());
+				u.setPassword(password.encode(user.getPassword()));
+				u.setRol(user.getRol());
+				
+				repNoSQL.save(us);
+				return repSQL.save(u);		
 	}
 	
 	

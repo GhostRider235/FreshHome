@@ -1,0 +1,258 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: #0d1b2a;
+  color: #ffffff;
+}
+
+/* NAVBAR */
+nav {
+  background-color: #1b263b;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 500;
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+nav .logo img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+/* HERO CON IMAGEN DE FONDO */
+.hero {
+  background: url('../static/img/background.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* oscurecimiento para contraste */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  z-index: 2;
+  text-align: center;
+  color: white;
+}
+
+.hero h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #00ff88;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-accent {
+  background-color: #00ff88;
+  color: #0d1b2a;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-accent:hover {
+  background-color: #00cc6e;
+}
+
+/* SECCIONES */
+.section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* SERVICIOS */
+.titulo-verde {
+  color: #00ff88;
+}
+
+.subtitulo-servicios {
+  color: #cccccc;
+  margin-bottom: 2rem;
+}
+
+.servicio-card {
+  background-color: #1b263b;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.servicio-card h4 {
+  color: #40e0d0; /* Azul turquesa */
+  margin-top: 1rem;
+}
+
+.icono-servicio {
+  font-size: 2.5rem;
+  color: #00ff88;
+}
+
+/* ÍCONOS EN TARJETAS DE SERVICIOS */
+.card .icono-servicio {
+  font-size: 3rem;
+  color: #00ff88;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .icono-servicio {
+  transform: scale(1.2);
+  color: #40e0d0; /* Turquesa al pasar el mouse */
+}
+
+.card h4 {
+  color: #40e0d0;
+  margin-top: 0.5rem;
+}
+
+.card p {
+  color: #ccc;
+}
+
+/* CALIFICACIONES */
+#calificaciones {
+  background-color: #1b263b;
+  color: #fff;
+}
+
+.card {
+  background-color: #2c3e50;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.rating-stars {
+  font-size: 1.2rem;
+}
+
+.rating-stars i {
+  margin-right: 5px;
+}
+
+/* Efecto de color en las estrellas */
+.text-warning {
+  color: #f1c40f;
+}
+
+/* FOOTER */
+footer {
+  background-color: #1b263b;
+  padding: 1rem;
+  text-align: center;
+  color: #ccc;
+}
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background-color: #1b263b;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.faq-question {
+  cursor: pointer;
+  color: #00ff88;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.faq-answer {
+  display: none;
+  color: #ccc;
+  padding-left: 1.5rem;
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  background-color: #34495e;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.faq-question.active {
+  color: #40e0d0; /* Color cuando la respuesta está desplegada */
+}
+
+.faq-question:hover {
+  color: #40e0d0; /* Cambio de color al pasar el mouse */
+}
+
+.faq-item:hover {
+  background-color: #2c3e50;
+}
+
+
+
+/* Títulos */
+.titulo-verde {
+  color: #00ff88;
+}
+
+.subtitulo-servicios {
+  color: #cccccc;
+  margin-bottom: 2rem;
+}

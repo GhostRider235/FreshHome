@@ -30,14 +30,14 @@ public class AuthControl {
 	
 	@GetMapping("/login")
 	public String iniciarSesion() {
-		return "login";
+		return "InicioSesion";
 	}
 	
 	@GetMapping("/register/client")
 	public String registro(Model m) {
 		usuarioDTO user = new usuarioDTO();
 		m.addAttribute("nuevoUsuario",user);
-		return "registerRol";
+		return "registrarCliente";
 	}
 	
 	@PostMapping("/register/client/")

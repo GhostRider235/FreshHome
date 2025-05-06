@@ -1,0 +1,191 @@
+
+:root {
+    --bg: #0a192f;
+    --accent: #3dff7b;
+    --glass: rgba(255, 255, 255, 0.1);
+    --text: #f1f5f9;
+    --white: #ffffff;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  nav {
+    background-color: rgba(15, 23, 42, 0.95);
+    padding: 20px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  nav .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
+  nav a {
+    color: var(--text);
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: var(--accent);
+  }
+
+  .section {
+    padding: 120px 30px;
+    text-align: center;
+  }
+
+  .section h2 {
+    font-size: 3.2rem;
+    color: var(--accent);
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .profile-card {
+    background-color: var(--glass);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 900px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    color: var(--text);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+
+  .profile-card img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 5px solid var(--accent);
+  }
+
+  .profile-card .profile-info {
+    flex-grow: 1;
+    margin-left: 30px;
+  }
+
+  .profile-card h3 {
+    color: var(--white);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .profile-card p {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .btn-accent {
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-accent:hover {
+    background-color: #00d86b;
+    box-shadow: 0 4px 15px rgba(0, 216, 107, 0.5);
+  }
+
+  .spacer {
+    height: 100px;
+  }
+
+  footer {
+    background-color: #0a192f;
+    padding: 30px 20px;
+    color: #94a3b8;
+    text-align: center;
+  }
+
+  .profile-edit-form {
+    background-color: var(--glass);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
+    margin: 0 auto;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+
+  .profile-edit-form .form-label {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .profile-edit-form .form-control {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+  }
+
+  .profile-edit-form .form-control:focus {
+    border-color: var(--accent);
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .profile-edit-form button {
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-top: 20px;
+    width: 100%;
+    transition: 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .profile-edit-form button:hover {
+    background-color: #00d86b;
+    box-shadow: 0 4px 15px rgba(0, 216, 107, 0.5);
+    transform: translateY(-5px);
+  }
+
+  .profile-edit-form .mb-4 {
+    margin-bottom: 30px;
+  }
