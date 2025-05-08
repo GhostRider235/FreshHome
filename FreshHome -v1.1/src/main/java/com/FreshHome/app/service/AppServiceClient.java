@@ -2,6 +2,7 @@ package com.FreshHome.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.FreshHome.app.jwt.JWTService;
 import com.FreshHome.app.repository.SolicitudRepository;
@@ -18,5 +19,5 @@ public class AppServiceClient {
 	@Autowired
 	private JWTService jwt;
 	
-	
+
 }

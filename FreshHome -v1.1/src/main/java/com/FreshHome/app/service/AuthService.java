@@ -35,6 +35,9 @@ public class AuthService implements UserDetailsServiceCustom {
 
 	@Autowired
 	private HabilidadesRepository h;
+	
+	@Autowired
+	private JWTService jwtservice;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
