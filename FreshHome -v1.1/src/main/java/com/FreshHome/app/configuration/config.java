@@ -60,10 +60,10 @@ public class config {
 		return http
 		.authorizeHttpRequests(auth -> auth
                 //Rutas a las que se puede acceder con un rol despues de iniciar sesion
-                .requestMatchers("(rutas publicas)").permitAll()
-                .requestMatchers("/app/client").hasRole("CLIENT")
-                .requestMatchers("/app/employee").hasRole("EMPLOYEE")
-                .requestMatchers("/admin").hasRole("AMDIN")
+                .requestMatchers("/init").permitAll()
+                .requestMatchers("/app/client/**").hasRole("CLIENT")
+                .requestMatchers("/app/employee/**").hasRole("EMPLOYEE")
+                .requestMatchers("/admin/*").hasRole("AMDIN")
                 //proteger el resto de rutas
                 .anyRequest().authenticated()
         )
