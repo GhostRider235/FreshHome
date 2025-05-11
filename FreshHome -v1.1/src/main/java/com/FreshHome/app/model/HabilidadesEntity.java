@@ -22,10 +22,10 @@ import java.util.*;
  * Collection: habilidades
  * Language: Java
  * Template: Spring Data
- * Generated on 2025-04-27
+ * Generated on 2025-05-10
  */
 @JsonTypeName("habilidades")
-@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-04-27T21:46:19.963213600-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("habilidades")
+@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-05-10T12:40:10.813945400-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("habilidades")
 public class HabilidadesEntity {
 
   @BsonProperty("_id")
@@ -158,3 +158,4 @@ public class HabilidadesEntity {
     return o.toString().replace("\n", "\n    ");
   }
 }
+

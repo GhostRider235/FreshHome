@@ -23,10 +23,10 @@ import java.util.*;
  * Collection: solicitud
  * Language: Java
  * Template: Spring Data
- * Generated on 2025-04-27
+ * Generated on 2025-05-10
  */
 @JsonTypeName("solicitud_pago")
-@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-04-27T21:22:15.105292300-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("solicitud_pago")
+@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-05-10T12:40:10.597498100-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("solicitud_pago")
 public class SolicitudPagoEntity {
 
   @BsonProperty("fechaPago")

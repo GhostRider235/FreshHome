@@ -24,10 +24,10 @@ import java.util.*;
  * Collection: usuario
  * Language: Java
  * Template: Spring Data
- * Generated on 2025-04-27
+ * Generated on 2025-05-10
  */
 @JsonTypeName("usuario")
-@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-04-27T21:31:01.586510200-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("usuario")
+@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-05-10T13:16:51.738883600-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("usuario")
 public class UsuarioEntity {
 
   @BsonProperty("_id")
@@ -54,9 +54,6 @@ public class UsuarioEntity {
 
   @BsonProperty("direccion")
   private String direccion;
-
-  @BsonProperty("user_id_sql")
-  private Long userIdSql;
 
   public UsuarioEntity id(ObjectId id) {
     this.id = id;
@@ -209,25 +206,6 @@ public class UsuarioEntity {
   public void setDireccion(String direccion) {
     this.direccion = direccion;
   }
-
-  public UsuarioEntity userIdSql(Long userIdSql) {
-    this.userIdSql = userIdSql;
-    return this;
-  }
-
-  /**
-   * Get userIdSql
-   * @return userIdSql
-   */
-  
-  @JsonProperty("user_id_sql")
-  public Long getUserIdSql() {
-    return userIdSql;
-  }
-
-  public void setUserIdSql(Long userIdSql) {
-    this.userIdSql = userIdSql;
-  }
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -244,13 +222,12 @@ public class UsuarioEntity {
         Objects.equals(this.correo, usuario.correo) &&
         Objects.equals(this.nombre, usuario.nombre) &&
         Objects.equals(this.contraseña, usuario.contraseña) &&
-        Objects.equals(this.direccion, usuario.direccion) &&
-        Objects.equals(this.userIdSql, usuario.userIdSql);
+        Objects.equals(this.direccion, usuario.direccion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, edad, fechaNacimiento, idUsuario, correo, nombre, contraseña, direccion, userIdSql);
+    return Objects.hash(id, edad, fechaNacimiento, idUsuario, correo, nombre, contraseña, direccion);
   }
 
   @Override
@@ -265,7 +242,6 @@ public class UsuarioEntity {
     sb.append("    nombre: ").append(toIndentedString(nombre)).append("\n");
     sb.append("    contraseña: ").append(toIndentedString(contraseña)).append("\n");
     sb.append("    direccion: ").append(toIndentedString(direccion)).append("\n");
-    sb.append("    userIdSql: ").append(toIndentedString(userIdSql)).append("\n");
     sb.append("}");
     return sb.toString();
   }

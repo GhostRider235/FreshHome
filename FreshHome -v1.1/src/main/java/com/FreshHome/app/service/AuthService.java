@@ -49,12 +49,11 @@ public class AuthService implements UserDetailsServiceCustom {
 
 	@Override
 	public UsuarioSesiones registrarUsuarioCliente(usuarioDTO user) {
-		// objeto del nuevo usuario en Posgre (SQL)
+		// objeto del nuevo usuario en PostgreSQL (SQL)
 		UsuarioSesiones u = new UsuarioSesiones();
 
 		// Objeto del nuevo usuario en Mongo (no SQL)
 		UsuarioEntity us = new UsuarioEntity();
-		HabilidadesEntity h = new HabilidadesEntity();
 
 		// Guardar en Mongo
 		us.setContraseña(password.encode(user.getPassword()));
@@ -62,7 +61,7 @@ public class AuthService implements UserDetailsServiceCustom {
 		us.setDireccion(user.getDireccion());
 		us.setEdad((int) ChronoUnit.YEARS.between(user.getFechaNacimiento(), LocalDateTime.now()));
 		us.setNombre(user.getNombre());
-		us.setUserIdSql(u.getId());
+		us.idUsuario((int)u.getId());
 
 		// Guardar en Posgre
 		u.setEmail(user.getEmail());
@@ -89,9 +88,8 @@ public class AuthService implements UserDetailsServiceCustom {
 		us.setDireccion(user.getDireccion());
 		us.setEdad((int) ChronoUnit.YEARS.between(user.getFechaNacimiento(), LocalDateTime.now()));
 		us.setNombre(user.getNombre());
-		us.setUserIdSql(u.getId());
+		us.setIdUsuario((int)u.getId());
 
-		// Agregar habilidades
 
 		// Guardar en Posgre
 		u.setEmail(user.getEmail());
