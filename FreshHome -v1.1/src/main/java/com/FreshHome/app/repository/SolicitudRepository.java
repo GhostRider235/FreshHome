@@ -1,5 +1,8 @@
 package com.FreshHome.app.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -14,4 +17,5 @@ import com.FreshHome.app.model.SolicitudEntity;
  * Generated on 2025-04-27
  */
 public interface SolicitudRepository extends MongoRepository<SolicitudEntity, ObjectId> {
+	List<SolicitudEntity> findBy();	
 }

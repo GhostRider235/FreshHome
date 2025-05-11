@@ -1,7 +1,9 @@
 package com.FreshHome.app.model;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import jakarta.annotation.Generated;
@@ -11,6 +13,7 @@ import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
+import java.time.OffsetDateTime;
 
 
 import java.util.*;
@@ -21,10 +24,10 @@ import java.util.*;
  * Collection: solicitud
  * Language: Java
  * Template: Spring Data
- * Generated on 2025-05-08
+ * Generated on 2025-05-10
  */
 @JsonTypeName("solicitud")
-@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-05-08T15:58:16.383876700-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("solicitud")
+@Generated(value = "com.mongodb.migrator.application.codegen.config.java.JavaSpringCodegenConfig", date = "2025-05-10T12:40:10.597498100-05:00[America/Bogota]", comments = "Generator version: 7.10.0")@Document("solicitud")
 public class SolicitudEntity {
 
   @BsonProperty("_id")
@@ -446,3 +449,4 @@ public class SolicitudEntity {
     return o.toString().replace("\n", "\n    ");
   }
 }
+
