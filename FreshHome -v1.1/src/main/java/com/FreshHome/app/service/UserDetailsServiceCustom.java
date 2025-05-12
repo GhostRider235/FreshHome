@@ -10,4 +10,5 @@ import com.FreshHome.app.model.dto.usuarioDTO;
 public interface UserDetailsServiceCustom extends UserDetailsService{
 	public UsuarioSesiones registrarUsuarioCliente(usuarioDTO user);
 	public UsuarioSesiones registrarUsuarioEmpleado(usuarioDTO user);
+	public HabilidadesEntity registroHabilidadesEmpleado(HabilidadesDto habilidad, UsuarioSesiones us);
 }

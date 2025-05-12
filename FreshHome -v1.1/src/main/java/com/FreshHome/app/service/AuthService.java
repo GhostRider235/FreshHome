@@ -16,6 +16,7 @@ import com.FreshHome.app.jwt.JWTService;
 import com.FreshHome.app.model.HabilidadesEntity;
 import com.FreshHome.app.model.UsuarioEntity;
 import com.FreshHome.app.model.UsuarioSesiones;
+import com.FreshHome.app.model.dto.HabilidadesDto;
 import com.FreshHome.app.model.dto.usuarioDTO;
 import com.FreshHome.app.repository.HabilidadesRepository;
 import com.FreshHome.app.repository.UsuarioRepository;
@@ -99,6 +100,16 @@ public class AuthService implements UserDetailsServiceCustom {
 
 		repNoSQL.save(us);
 		return repSQL.save(u);
+	}
+
+	@Override
+	public HabilidadesEntity registroHabilidadesEmpleado(HabilidadesDto habilidad, UsuarioSesiones us){
+		HabilidadesEntity h = new HabilidadesEntity();
+		h.setAñosExperiencia(habilidad.getAñosExperiencia());
+		h.setHabilidad(habilidad.getHabilidad());
+		h.setIdUsuario(us.getUserIdSql());
+
+		return repNoSQL.save(h);
 	}
 
 }
