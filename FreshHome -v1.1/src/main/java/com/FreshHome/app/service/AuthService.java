@@ -103,11 +103,11 @@ public class AuthService implements UserDetailsServiceCustom {
 	}
 
 	@Override
-	public HabilidadesEntity registroHabilidadesEmpleado(HabilidadesDto habilidad){
+	public HabilidadesEntity registroHabilidadesEmpleado(HabilidadesDto habilidad, UsuarioSesiones us){
 		HabilidadesEntity h = new HabilidadesEntity();
 		h.setAñosExperiencia(habilidad.getAñosExperiencia());
 		h.setHabilidad(habilidad.getHabilidad());
-		h.setIdUsuario(habilidad.getIdUsuario());
+		h.setIdUsuario(us.getUserIdSql());
 
 		return repNoSQL.save(h);
 	}

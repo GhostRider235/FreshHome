@@ -3,6 +3,7 @@ package com.FreshHome.app.model.dto;
 
 
 public class HabilidadesDto {
+    
     private String Habilidad;
     private int añosExperiencia;
     private int idUsuario;
