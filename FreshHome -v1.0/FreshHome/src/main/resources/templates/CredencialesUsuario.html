@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tabla de Credenciales de Usuario</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/css/CredencialesUsuario.css" />
+</head>
+<body>
+  <!-- Encabezado con logo y botón salir -->
+  <div class="d-flex justify-content-between align-items-center px-4 py-3 bg-light border-bottom">
+    <div class="d-flex align-items-center">
+      <img src="../static/img/FreshHome.png" alt="Logo FreshHome" style="height: 70px; margin-right: 10px;">
+      <h4 class="m-0 fw-bold"></h4>
+    </div>
+    <button class="btn btn-danger">Salir</button>
+  </div>
+
+  <!-- Contenedor de tabla -->
+  <div class="table-container mt-4">
+    <h2>Credenciales del Usuario</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Correo Electrónico</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Katherine López</td>
+          <td>21</td>
+          <td>katherine@example.com</td>
+          <td>29/04/2004</td>
+          <td>
+            <button class="btn btn-primary">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Juan Pérez</td>
+          <td>28</td>
+          <td>juan.perez@email.com</td>
+          <td>15/03/1997</td>
+          <td>
+            <button class="btn btn-primary">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Laura Sánchez</td>
+          <td>35</td>
+          <td>laura.sanchez@email.com</td>
+          <td>02/11/1989</td>
+          <td>
+            <button class="btn btn-primary">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Carlos Gómez</td>
+          <td>42</td>
+          <td>carlos.gomez@email.com</td>
+          <td>20/08/1982</td>
+          <td>
+            <button class="btn btn-primary">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Sección de edición -->
+  <div class="container mt-5 mb-4 p-4 rounded-4 shadow" style="background-color: #1c2738; max-width: 700px;">
+    <h4 class="mb-4 text-white">Editar Usuario</h4>
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label text-white">Nombre</label>
+          <input type="text" class="form-control" placeholder="Nombre completo">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-white">Edad</label>
+          <input type="number" class="form-control" placeholder="Edad">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label text-white">Correo Electrónico</label>
+          <input type="email" class="form-control" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-white">Fecha de Nacimiento</label>
+          <input type="date" class="form-control">
+        </div>
+      </div>
+      <div class="text-end">
+        <button type="submit" class="btn btn-success px-4">Guardar</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
