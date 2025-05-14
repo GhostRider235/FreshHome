@@ -1,0 +1,190 @@
+/* CredencialesUsuario.css */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a4c64; /* Azul turquí oscuro */
+  color: #e5f4f1; /* Blanco suave */
+  margin: 0;
+  padding: 0;
+}
+
+/* Encabezado con logo y botón salir */
+.bg-light {
+  background-color: #122b3d !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 12px 24px;
+  color: white;
+}
+
+.navbar-brand img {
+  height: 50px;
+}
+
+h4.fw-bold {
+  color: #2dcfb3;
+}
+
+/* Botón salir */
+.btn-danger {
+  background-color: #ff5e5e;
+  border: none;
+  font-size: 15px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-danger:hover {
+  background-color: #e14c4c;
+  transform: scale(1.05);
+}
+
+/* Tabla de credenciales */
+.table-container {
+  max-width: 95%;
+  margin: 40px auto;
+  background-color: #1e2b3e; /* Fondo más oscuro y elegante */
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  color: #eaf7f5;
+}
+
+h2 {
+  color: #2dcfb3;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 26px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.table thead {
+  background-color: #2dcfb3;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.table th, .table td {
+  text-align: center;
+  padding: 14px;
+  vertical-align: middle;
+  border-bottom: 1px solid #3a4a5c;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #2a3c4f;
+}
+
+.btn-primary {
+  background-color: #2dcfb3;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #25b39e;
+}
+
+.btn-danger {
+  background-color: #ff5e5e;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.btn-danger:hover {
+  background-color: #e14c4c;
+}
+
+
+/* Botones de acción */
+.btn-primary {
+  background-color: #2dcfb3;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #0a4c64;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #25b39e;
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  color: white;
+}
+
+/* Formulario de edición */
+.container {
+  background-color: #1c2738;
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.container h4 {
+  color: #2dcfb3;
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #e5f4f1;
+}
+
+.form-control {
+  background-color: #2e3c4d;
+  border: 1px solid #4d6a84;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.form-control::placeholder {
+  color: #b0c6cc;
+}
+
+.form-control:focus {
+  border-color: #2dcfb3;
+  box-shadow: 0 0 5px #2dcfb3;
+  outline: none;
+}
+
+.btn-success {
+  background-color: #2dcfb3;
+  border: none;
+  color: #0a4c64;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-success:hover {
+  background-color: #25b39e;
+  transform: scale(1.05);
+}

@@ -1,56 +1,64 @@
+/* GENERAL */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   background-color: #0d1b2a;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* NAVBAR */
 nav {
   background-color: #1b263b;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #34495e;
 }
 
 nav a {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   margin-left: 1.5rem;
   font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #00ff88;
 }
 
 nav .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
 }
 
 nav .logo img {
-  width: 40px;
+  width: 35px;
   margin-right: 10px;
 }
 
-/* HERO CON IMAGEN DE FONDO */
+/* HERO */
 .hero {
-  background: url('../static/img/background.jpg') no-repeat center center;
+  background: url("../img/background.jpg");
   background-size: cover;
   height: 100vh;
-  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* oscurecimiento para contraste */
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding: 2rem;
 }
 
@@ -61,8 +69,8 @@ nav .logo img {
 }
 
 .hero h2 {
-  font-size: 2.8rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 600;
   color: #00ff88;
   margin-bottom: 1rem;
 }
@@ -82,9 +90,9 @@ nav .logo img {
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
   text-decoration: none;
+  transition: background-color 0.3s;
 }
 
 .btn-accent:hover {
@@ -100,10 +108,13 @@ nav .logo img {
 /* SERVICIOS */
 .titulo-verde {
   color: #00ff88;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .subtitulo-servicios {
-  color: #cccccc;
+  color: #ccc;
+  font-size: 1.1rem;
   margin-bottom: 2rem;
 }
 
@@ -111,84 +122,71 @@ nav .logo img {
   background-color: #1b263b;
   padding: 1.5rem;
   border-radius: 10px;
-  margin-bottom: 1rem;
   color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
 }
 
 .servicio-card h4 {
-  color: #40e0d0; /* Azul turquesa */
+  color: #40e0d0;
   margin-top: 1rem;
 }
 
 .icono-servicio {
-  font-size: 2.5rem;
-  color: #00ff88;
-}
-
-/* ÍCONOS EN TARJETAS DE SERVICIOS */
-.card .icono-servicio {
   font-size: 3rem;
   color: #00ff88;
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
 }
 
-.card:hover .icono-servicio {
-  transform: scale(1.2);
-  color: #40e0d0; /* Turquesa al pasar el mouse */
+.servicio-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.card h4 {
-  color: #40e0d0;
-  margin-top: 0.5rem;
-}
-
-.card p {
-  color: #ccc;
+.servicio-card:hover .icono-servicio {
+  transform: scale(1.1);
 }
 
 /* CALIFICACIONES */
 #calificaciones {
   background-color: #1b263b;
   color: #fff;
+  padding: 4rem 2rem;
 }
 
 .card {
   background-color: #2c3e50;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .card h5 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
 }
 
 .card p {
+  color: #bbb;
   font-size: 1rem;
-  color: #ddd;
 }
 
 .rating-stars {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  color: #f1c40f;
 }
 
 .rating-stars i {
   margin-right: 5px;
-}
-
-/* Efecto de color en las estrellas */
-.text-warning {
-  color: #f1c40f;
 }
 
 /* FOOTER */
@@ -197,62 +195,69 @@ footer {
   padding: 1rem;
   text-align: center;
   color: #ccc;
+  border-top: 1px solid #34495e;
 }
 
+/* FAQ */
 .faq-container {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra los elementos */
+  gap: 2rem;
+  margin: 3rem 0;
 }
 
 .faq-item {
   background-color: #1b263b;
   border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  width: 300px; /* Tamaño más grande */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  text-align: center; /* Centrado de texto */
+}
+
+.faq-item:hover {
+  background-color: #34495e;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .faq-question {
   cursor: pointer;
   color: #00ff88;
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  transition: color 0.3s ease;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  transition: color 0.3s;
 }
 
 .faq-answer {
   display: none;
   color: #ccc;
-  padding-left: 1.5rem;
   padding-top: 0.5rem;
   font-size: 1rem;
   background-color: #34495e;
   border-radius: 5px;
   margin-top: 0.5rem;
   transition: max-height 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
 }
 
 .faq-question.active {
-  color: #40e0d0; /* Color cuando la respuesta está desplegada */
+  color: #40e0d0;
 }
 
 .faq-question:hover {
-  color: #40e0d0; /* Cambio de color al pasar el mouse */
+  color: #40e0d0;
 }
 
 .faq-item:hover {
   background-color: #2c3e50;
 }
 
-
-
-/* Títulos */
-.titulo-verde {
-  color: #00ff88;
-}
-
-.subtitulo-servicios {
-  color: #cccccc;
-  margin-bottom: 2rem;
+/* Ajuste en la visibilidad de la respuesta */
+.faq-item .active + .faq-answer {
+  display: block;
+  max-height: 500px;  /* Asegura que la respuesta se expanda */
 }

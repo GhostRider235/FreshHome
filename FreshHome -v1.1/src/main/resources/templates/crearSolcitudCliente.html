@@ -1,88 +1,61 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Crear Solicitud</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/crearSolicitudCliente.css" />
-  </head>
-  <body>
-    <nav>
-      <a href="./InicioVista.html" class="logo" title="Inicio">FreshHome</a>
-      <div>
-        <a href="#servicios">Servicios</a>
-        <a href="#calificaciones">Calificaciones</a>
-        <a href="#faqs">FAQs</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </nav>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crear Solicitud | FreshHome</title>
 
-    <div class="container">
-      <h1 class="text-center mt-5">Crear Solicitud de Servicio</h1>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/crearsolicitudcliente.css" />
+</head>
+<body>
 
-      <form id="formCrearSolicitud" class="mt-4">
-        <div class="mb-3">
-          <label for="clienteNombre" class="form-label">Nombre Completo</label>
-          <input type="text" class="form-control" id="clienteNombre" placeholder="Ingrese su nombre completo" required />
+  <!-- Botón salir -->
+  <div class="exit-button">
+    <a href="perfilCliente.html">Salir</a>
+  </div>
+
+  <!-- Contenedor principal -->
+  <section class="form-section">
+    <div class="form-container">
+      <img src="../static/img/FreshHome.png" alt="FreshHome Logo" class="logo">
+      <h2>Crear Solicitud de Servicio</h2>
+
+      <form id="solicitudForm" class="grid-form">
+        <div class="form-group">
+          <label for="tipoServicio">Tipo de servicio</label>
+          <input type="text" id="tipoServicio" placeholder="Ej: Limpieza general" required>
         </div>
 
-        <div class="mb-3">
-          <label for="clienteCorreo" class="form-label">Correo Electrónico</label>
-          <input type="email" class="form-control" id="clienteCorreo" placeholder="Ingrese su correo electrónico" required />
+        <div class="form-group">
+          <label for="fecha">Fecha del servicio</label>
+          <input type="date" id="fecha" required>
         </div>
 
-        <div class="mb-3">
-          <label for="clienteTelefono" class="form-label">Teléfono</label>
-          <input type="tel" class="form-control" id="clienteTelefono" placeholder="Ingrese su número de teléfono" required />
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" placeholder="Cra 45 #56-78" required>
         </div>
 
-        <div class="mb-3">
-          <label for="clienteDireccion" class="form-label">Dirección de Servicio</label>
-          <input type="text" class="form-control" id="clienteDireccion" placeholder="Ingrese la dirección de servicio" required />
+        <div class="form-group">
+          <label for="descripcion">Descripción adicional</label>
+          <textarea id="descripcion" rows="4" placeholder="Indica más detalles sobre el servicio..." required></textarea>
         </div>
 
-        <div class="mb-3">
-          <label for="servicioSeleccionado" class="form-label">Servicio Requerido</label>
-          <select class="form-select" id="servicioSeleccionado" required>
-            <option value="" disabled selected>Seleccione el servicio</option>
-            <option value="limpieza">Limpieza General</option>
-            <option value="reparacion">Reparación de Electrodomésticos</option>
-            <option value="mantenimiento">Mantenimiento de Jardines</option>
-            <option value="otros">Otros Servicios</option>
-          </select>
+        <div class="form-button">
+          <button type="submit">Enviar Solicitud</button>
         </div>
-
-        <div class="mb-3">
-          <label for="comentarios" class="form-label">Comentarios Adicionales</label>
-          <textarea class="form-control" id="comentarios" rows="3" placeholder="Agregue comentarios adicionales si lo desea"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Crear Solicitud</button>
       </form>
     </div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      document.getElementById('formCrearSolicitud').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const nombre = document.getElementById('clienteNombre').value;
-        const correo = document.getElementById('clienteCorreo').value;
-        const telefono = document.getElementById('clienteTelefono').value;
-        const direccion = document.getElementById('clienteDireccion').value;
-        const servicio = document.getElementById('servicioSeleccionado').value;
-        const comentarios = document.getElementById('comentarios').value;
+  <script>
+    document.getElementById('solicitudForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Solicitud enviada correctamente.");
+      window.location.href = "perfilCliente.html";
+    });
+  </script>
 
-        if (nombre && correo && telefono && direccion && servicio) {
-          alert('¡Solicitud creada con éxito!');
-          // Aquí puedes agregar el código para enviar los datos al servidor o a la base de datos.
-        } else {
-          alert('Por favor, complete todos los campos obligatorios.');
-        }
-      });
-    </script>
-  </body>
-</html> 
+</body>
+</html>

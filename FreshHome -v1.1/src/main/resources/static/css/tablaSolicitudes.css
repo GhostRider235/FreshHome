@@ -98,7 +98,7 @@
   /* Mejora de contraste para estados */
   .status.Aprobada {
     background-color: rgba(61, 255, 123, 0.25);
-    color: #2dd97a;
+    color: hwb(147 18% 15%);
   }
   
   .status.Pendiente {

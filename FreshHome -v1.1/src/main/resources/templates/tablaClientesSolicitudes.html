@@ -13,16 +13,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
 
   <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="../css/tablaSolicitudes.css" />
+  <link rel="stylesheet" href="../static/css/tablaSolicitudes.css" />
 </head>
 
 <body>
   <header>
     <a href="./InicioVista.html" class="logo" title="Inicio">
-      <h1>FreshHome</h1>
+      <img src="../static/img/FreshHome.png" alt="Logo FreshHome" style="height: 60px;"> <!-- Logo en lugar de "FreshHome" -->
     </a>
     <nav>
-      <a class="logout" href="/cerrar-sesion" title="Cerrar sesión">
+      <a class="logout" href="perfilEmpleado.html" title="Cerrar sesión"> <!-- Redirige a perfilEmpleado.html -->
         <i class="bi bi-box-arrow-right me-1"></i>Salir
       </a>
     </nav>
@@ -30,6 +30,11 @@
 
   <main class="container">
     <h2 class="mb-4">Solicitudes de Clientes</h2>
+
+    <!-- Botón "Ver Clientes" -->
+    <div class="mb-4">
+      <a href="tablaClientes.html" class="btn btn-primary">Ver Clientes</a> <!-- Botón separado -->
+    </div>
 
     <!-- Filtros -->
     <div class="filters">

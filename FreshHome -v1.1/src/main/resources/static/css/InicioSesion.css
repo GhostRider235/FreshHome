@@ -1,114 +1,127 @@
 /* Estilo global */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #0d1b2a;
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
   margin: 0;
   color: white;
+  overflow-x: hidden;
 }
 
 /* Barra de navegación */
 .navbar {
-  background-color: #1b263b;
+  background-color: rgba(27, 38, 59, 0.9);
   padding: 1rem 2rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .navbar .navbar-brand {
   font-weight: 700;
   color: #00ff88;
-  font-size: 1.75rem;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
 }
 
 .navbar .navbar-brand:hover {
   color: #40e0d0;
 }
 
-/* Contenedor de inicio de sesión */
+/* Contenedor */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #0d1b2a;
+  padding: 2rem;
 }
 
 /* Caja de inicio de sesión */
 .login-box {
-  background: #1b263b;
-  padding: 2.5rem;
+  background: rgba(27, 38, 59, 0.95);
+  padding: 3rem 2.5rem;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 420px;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.login-box:hover {
+  transform: translateY(-5px);
 }
 
 .login-box h2 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
   font-weight: 700;
   font-size: 2rem;
   color: #00ff88;
 }
 
-/* Estilos del formulario */
+/* Formulario */
 .form-group {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 .form-group label {
-  font-weight: 600;
+  font-weight: 500;
   color: #ccc;
+  margin-bottom: 0.4rem;
   display: block;
-  margin-bottom: 0.5rem;
 }
 
 .form-group input {
   width: 100%;
-  padding: 1rem;
+  padding: 0.9rem 1rem;
   border: 1px solid #3a4a62;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: #2c3e50;
   color: white;
   font-size: 1rem;
-  transition: border 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus {
   border-color: #00ff88;
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.2);
   outline: none;
 }
 
+/* Botón de login */
 .btn-login {
   width: 100%;
   padding: 1rem;
-  background-color: #00ff88;
+  background: linear-gradient(to right, #00ff88, #00cc6e);
   color: #0d1b2a;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: bold;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-login:hover {
-  background-color: #00cc6e;
   transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.5);
 }
 
-/* Texto para la sección de registro */
+/* Registro */
 .registro-texto {
-  margin-top: 1.5rem;
+  margin-top: 1.8rem;
   font-size: 1rem;
-  color: #ccc;
+  color: #aaa;
 }
 
 .registro-texto a {
   color: #00ff88;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .registro-texto a:hover {
-  text-decoration: underline;
   color: #40e0d0;
+  text-decoration: underline;
 }
