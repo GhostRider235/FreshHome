@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Error</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Error de Inicio | FreshHome</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/css/errorInicio.css" />
 </head>
 <body>
 
-	<div th:fragment="~{components/NavBar :: inicio}"></div>
-	<br>
-	<br>
-	<div class="container">
-	<div class="text-center">
-		<h1 th:text="${error}" class="fs-1"></h1>
-	</div>
-	</div>
+  <section class="error-section">
+    <div class="error-card">
+      <img src="../static/img/FreshHome.png" alt="Error" class="error-img" />
+      <h1>Ups... Algo salió mal</h1>
+      <p>Verifica tu usuario o contraseña y vuelve a intentarlo.</p>
+      <a href="/InicioSesion.html" class="btn-return">Volver al inicio de sesión</a>
+    </div>
+  </section>
+
 </body>
 </html>

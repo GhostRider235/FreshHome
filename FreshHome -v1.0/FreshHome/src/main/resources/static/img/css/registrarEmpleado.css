@@ -1,0 +1,174 @@
+:root {
+  --bg: #0a192f;
+  --accent: #3dff7b;
+  --text: #f1f5f9;
+  --glass: rgba(255, 255, 255, 0.05);
+  --white: #ffffff;
+  --blur: blur(10px);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  animation: fadeIn 1.2s ease-in-out both;
+}
+
+/* Contenedor principal del formulario */
+.form-container.wide {
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  max-width: 850px;
+  width: 100%;
+  padding: 50px;
+  animation: slideUp 0.8s ease forwards;
+}
+
+/* Logo centrado */
+.logo-container {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.logo-container img {
+  max-width: 140px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Título */
+h2 {
+  text-align: center;
+  font-size: 2.3rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Diseño del formulario */
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 1.4s ease;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.form-group input {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  background-color: transparent;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder {
+  color: #cbd5e1;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #00d86b;
+  box-shadow: 0 0 8px rgba(61, 255, 123, 0.5);
+}
+
+/* Botón de registrar */
+.form-button {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.form-button button {
+  padding: 14px 45px;
+  border: none;
+  border-radius: 50px;
+  background-color: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-button button:hover {
+  background-color: #00d86b;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 216, 107, 0.5);
+}
+
+/* Animaciones */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .grid-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-button {
+    grid-column: span 1;
+  }
+
+  .form-container.wide {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .logo-container img {
+    max-width: 100px;
+  }
+}

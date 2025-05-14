@@ -1,0 +1,113 @@
+:root {
+    --bg: #0a192f;
+    --accent: #3dff7b;
+    --text: #f1f5f9;
+    --glass: rgba(255, 255, 255, 0.05);
+    --shadow: rgba(93, 255, 163, 0.25);
+  }
+  
+  body {
+    margin: 0;
+    background: radial-gradient(circle at top left, #0a192f, #1f2937);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #0d253f;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  header h1 {
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .logout {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .logout:hover {
+    color: var(--accent);
+  }
+  
+  .container {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .filters input,
+  .filters select {
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    outline: none;
+  }
+  
+  .table {
+    background-color: var(--glass);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px var(--shadow);
+  }
+  
+  .table th,
+  .table td {
+    color: var(--text);
+    background-color: transparent;
+    vertical-align: middle;
+  }
+  
+  .table thead {
+    background-color: rgba(61, 255, 123, 0.1);
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+  
+  .status {
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-block;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Mejora de contraste para estados */
+  .status.Aprobada {
+    background-color: rgba(61, 255, 123, 0.25);
+    color: hwb(147 18% 15%);
+  }
+  
+  .status.Pendiente {
+    background-color: rgba(255, 193, 7, 0.25);
+    color: #e0a800;
+  }
+  
+  .status.Cancelada {
+    background-color: rgba(220, 53, 69, 0.25);
+    color: #dc3545;
+  }
+  
