@@ -1,5 +1,6 @@
 package com.FreshHome.app.model.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.FreshHome.app.model.RolesSesiones;
@@ -14,11 +15,19 @@ public class usuarioDTO {
 	private String email;
 	private String password;
 	private String nombre;
-	private RolesSesiones rol;
-	private Long userIdSql;
-	private LocalDateTime fechaNacimiento;
+	private String rol;
+	private LocalDate fechaNacimiento;
 	private Integer edad;
 	private String direccion;
+	private String Telefono;
+
+	public String getTelefono() {
+		return Telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		Telefono = telefono;
+	}
 
 	public String getEmail() {
 		return email;
@@ -44,27 +53,25 @@ public class usuarioDTO {
 		this.nombre = nombre;
 	}
 
-	public RolesSesiones getRol() {
+
+
+	public String getRol() {
 		return rol;
 	}
 
-	public void setRol(RolesSesiones rol) {
+	public void setRol(String rol) {
 		this.rol = rol;
 	}
 
-	public Long getUserIdSql() {
-		return userIdSql;
-	}
 
-	public void setUserIdSql(Long userIdSql) {
-		this.userIdSql = userIdSql;
-	}
 
-	public LocalDateTime getFechaNacimiento() {
+
+
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 

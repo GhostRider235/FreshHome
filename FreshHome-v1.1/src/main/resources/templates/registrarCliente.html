@@ -24,31 +24,43 @@
   <!-- Registro -->
   <section id="registro" class="section py-5 px-3" data-aos="fade-up">
     <div class="container">
-      <h2 class="text-center text-accent mb-4">Registrar Cliente</h2>
-      <form class="register-form mx-auto" style="max-width: 500px;" data-aos="fade-up" data-aos-delay="200" id="registroForm">
+      <h2 class="text-center text-accent mb-4">Registro</h2>
+      <form class="register-form mx-auto" style="max-width: 500px;" data-aos="fade-up" data-aos-delay="200" id="registroForm"
+      	th:action="@{/auth/registro}" method="post" th:object="${nuevoUsuario}">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre Completo</label>
-          <input type="text" class="form-control" id="nombre" placeholder="Juan Pérez" aria-label="Nombre Completo" required/>
+          <input type="text" class="form-control" id="nombre" placeholder="Juan Pérez" aria-label="Nombre Completo" required th:field="*{nombre}"/>
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Correo Electrónico</label>
-          <input type="email" class="form-control" id="email" placeholder="juanperez@gmail.com" aria-label="Correo Electrónico" required/>
+          <input type="email" class="form-control" id="email" placeholder="juanperez@gmail.com" aria-label="Correo Electrónico" required th:field="*{email}"/>
         </div>
         <div class="mb-3">
           <label for="telefono" class="form-label">Teléfono</label>
-          <input type="tel" class="form-control" id="telefono" placeholder="+57 310 123 4567" aria-label="Teléfono" required/>
+          <input type="tel" class="form-control" id="telefono" placeholder="+57 310 123 4567" aria-label="Teléfono" required th:field="*{telefono}"/>
         </div>
         <div class="mb-3">
           <label for="direccion" class="form-label">Dirección</label>
-          <input type="text" class="form-control" id="direccion" placeholder="Calle 10, Cartagena" aria-label="Dirección" required/>
+          <input type="text" class="form-control" id="direccion" placeholder="Calle 10, Cartagena" aria-label="Dirección" required th:field="*{direccion}"/>
         </div>
+         <div class="mb-3">
+          <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+          <input type="datetime" class="form-control" id="fechaNacimiento" placeholder="Calle 10, Cartagena" aria-label="fechaNacimiento" required th:field="*{fechaNacimiento}"/>
+        </div>
+       <div>
+		  <label for="selection" class="form-label">Puesto</label>
+        	<select name="rol" class="form-select" id="selection" required th:field="*{rol}">
+            	<option value="CLIENT">Cliente</option>
+        		<option value="EMPLOYEE">Empleado</option>
+       		</select>
+       </div>
         <div class="mb-3">
           <label for="contrasena" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="contrasena" placeholder="******" aria-label="Contraseña" required/>
+          <input type="password" class="form-control" id="contrasena" aria-label="Contraseña" required th:field="*{password}"/>
         </div>
         <div class="mb-4">
           <label for="confirmar-contrasena" class="form-label">Confirmar Contraseña</label>
-          <input type="password" class="form-control" id="confirmar-contrasena" placeholder="******" aria-label="Confirmar Contraseña" required/>
+          <input type="password" class="form-control" id="confirmar-contrasena" aria-label="Confirmar Contraseña" required/>
         </div>
         <div class="d-grid">
           <button type="submit" class="btn btn-accent">Registrar</button>

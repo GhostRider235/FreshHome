@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,11 +36,11 @@ public class JWTService {
 	private long expirationTime;
 
 	@Value("${jwt.cookie.name}")
-	private String cookieName;
+	private String NombreCookie;
 
 
 	public String getCookieName() {
-		return this.cookieName;
+		return this.NombreCookie;
 	}
 
 	public String getSecretKey() {
@@ -102,7 +104,7 @@ public class JWTService {
 			return null;
 
 		for (Cookie i : request.getCookies()) {
-			if (i.getName().equals(cookieName)) {
+			if (i.getName().equals(NombreCookie)) {
 				return i.getValue();
 			}
 		}
@@ -112,26 +114,24 @@ public class JWTService {
 
 	//metodo para almacenar cookies
 	public void almacenarTokenCookie(HttpServletResponse response, String token) {
-		Cookie cookie = new Cookie(cookieName, token);
-		cookie.setPath("/");
-		cookie.setHttpOnly(true);
-		cookie.setSecure(true);
-		cookie.setMaxAge((int) expirationTime / 1000);
-
-		String cookieHeader = String.format("%s=%s; Path=%s; HttpOnly; %s SameSite=Strict", cookieName, token, "/",
-				(cookie.getSecure() ? "Secure;" : ""));
-
-		response.addHeader("set-cookie", cookieHeader);
+		ResponseCookie cookie = ResponseCookie.from("freshHomeCookie", NombreCookie)
+				.httpOnly(true)
+				.secure(true)
+				.path("/")
+				.maxAge(expirationTime)
+				.sameSite("Strict")
+				.build();
+		response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 	}
 
 	// Para cuando el usuario cierre la sesion
 	public void EliminarCookie(HttpServletResponse response) {
-		Cookie cookie = new Cookie(cookieName, null);
-		cookie.setPath("/");
-		cookie.setHttpOnly(true);
-		cookie.setSecure(true); // Mismo valor que en la creación
-		cookie.setMaxAge(0); // Elimina la cookie
-		response.addCookie(cookie);
+		Cookie c = new Cookie(NombreCookie, null);
+		c.setPath("/");
+		c.setHttpOnly(true);
+		c.setSecure(true); // Mismo valor que en la creación
+		c.setMaxAge(0); // Elimina la cookie
+		response.addCookie(c);
 	}
 
 }
