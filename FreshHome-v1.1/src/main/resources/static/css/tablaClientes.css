@@ -1,0 +1,86 @@
+
+:root {
+  --bg: #0a192f;
+  --accent: #3dff7b;
+  --glass: rgba(255, 255, 255, 0.05);
+  --text: #f1f5f9;
+  --shadow: rgba(93, 255, 163, 0.3);
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, var(--bg), #1f2937);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  padding-top: 80px;
+}
+
+h1 {
+  text-align: center;
+  color: var(--accent);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.navbar {
+  background-color: var(--bg);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navbar-brand {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.table-container {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 20px;
+  box-shadow: 0 8px 24px var(--shadow);
+  animation: fadeInUp 1s ease-out;
+}
+
+.table th {
+  color: var(--accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.form-control {
+  background-color: #1e293b;
+  border: none;
+  color: var(--text);
+}
+
+.form-control::placeholder {
+  color: #94a3b8;
+}
+
+.page-link {
+  background-color: #1e293b;
+  color: var(--text);
+  border: none;
+}
+
+.page-item.active .page-link {
+  background-color: var(--accent);
+  color: #0a192f;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

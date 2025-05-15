@@ -1,0 +1,148 @@
+/* crearSolicitudCliente.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0a192f, #1f2937);
+  color: #f1f5f9;
+  padding-top: 80px;
+}
+
+nav {
+  background-color: #74849d;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+nav .logo {
+  color: #3dff7b;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav a {
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin: 0 20px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #3dff7b;
+}
+
+.container {
+  margin-top: 120px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #f1f5f9;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  margin-top: 30px;
+}
+
+.form-label {
+  font-size: 1rem;
+  color: #f1f5f9;
+  margin-bottom: 8px;
+}
+
+.form-control {
+  background-color: #f8fafc; /* Fondo claro para los campos */
+  border: 1px solid #ccc; /* Borde visible */
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #333; /* Texto oscuro para contraste */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #3dff7b;
+  box-shadow: 0 0 10px rgba(61, 255, 123, 0.5);
+}
+
+.select {
+  background-color: #f8fafc; /* Fondo claro */
+  border: 1px solid #ccc; /* Borde visible */
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #333; /* Texto oscuro */
+}
+
+textarea.form-control {
+  resize: vertical;
+  height: 150px;
+}
+
+button[type="submit"] {
+  background-color: #3dff7b;
+  color: #fff;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:hover {
+  background-color: #35e167;
+  transform: scale(1.05);
+}
+
+button[type="submit"]:active {
+  background-color: #32b85f;
+}
+
+@media (max-width: 767px) {
+  nav {
+    padding: 10px 20px;
+  }
+
+  nav a {
+    font-size: 1rem;
+  }
+
+  .container {
+    margin-top: 80px;
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+}
