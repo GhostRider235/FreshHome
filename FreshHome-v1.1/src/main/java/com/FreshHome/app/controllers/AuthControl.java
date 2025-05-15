@@ -55,19 +55,21 @@ public class AuthControl {
 
 	@PostMapping("/register")
 	public String registrarUsuario(@ModelAttribute("nuevoUsuario") usuarioDTO entity,HttpServletResponse response, HttpServletRequest request) throws IOException, ServletException {
-		
+		//Se crea el usuario y lo almacena
 		UsuarioSesiones user = service.registrarUsuario(entity);
-		
+		//Se genera el token
 		String token = jwt.generarToken(user, (int)user.getId());
-		
+		//Lo almacena en la cookie
 		jwt.almacenarTokenCookie(response, token);
 		
+		//realiza la autenticacion
 		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user,null, user.getAuthorities());
 		
 		authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 		
 	    successHandlerSesion.onAuthenticationSuccess(request, response, authToken);
 		
+	    //no retorna nada porque el SuccessHandler se encarga de redireccionar
 		return null;
 	}
 	
