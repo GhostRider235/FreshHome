@@ -1,0 +1,163 @@
+/* HERO con fondo personalizado */
+.hero-cliente {
+  background-image: url("../img/Fondo1.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  color: white;
+}
+
+/* Barra superior personalizada */
+.navbar-custom {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-custom .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #00ff88;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.navbar-custom .logo img {
+  height: 40px;
+}
+
+.navbar-custom a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: color 0.3s;
+}
+
+.navbar-custom a:hover {
+  color: #00ff88;
+}
+
+/* Overlay del héroe */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.overlay h2 {
+  font-size: 2.5rem;
+}
+
+.acciones-cliente {
+  margin-top: 2rem;
+}
+
+.acciones-cliente .btn {
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+}
+/* ============================
+   Estilos para Calificaciones
+   ============================ */
+
+#calificaciones {
+  background: linear-gradient(135deg, #00ff88, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+#calificaciones .card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+#calificaciones .card:hover {
+  transform: scale(1.03);
+}
+
+.rating-stars i {
+  font-size: 1.3rem;
+  margin-right: 2px;
+}
+
+/* === Formulario moderno para agregar calificaciones === */
+/* === Formulario minimalista para agregar calificaciones === */
+#formulario-calificacion {
+  background-color: #0f2027;
+  border-left: 4px solid #00ff88;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  color: #ffffff;
+  max-width: 550px;
+  margin: 3rem auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#formulario-calificacion h3 {
+  margin-bottom: 1.5rem;
+  color: #00ff88;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #2c5364;
+  padding-bottom: 0.5rem;
+}
+
+#formulario-calificacion label {
+  font-weight: 500;
+  margin-top: 1rem;
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+}
+
+#formulario-calificacion .form-control {
+  background-color: #203a43;
+  border: 1px solid #2c5364;
+  color: #ffffff;
+  border-radius: 0.3rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+#formulario-calificacion .form-control::placeholder {
+  color: #bbbbbb;
+}
+
+#formulario-calificacion .btn {
+  margin-top: 1.5rem;
+  background-color: #00ff88;
+  color: #0f2027;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#formulario-calificacion .btn:hover {
+  background-color: #00cc6a;
+  color: #ffffff;
+}

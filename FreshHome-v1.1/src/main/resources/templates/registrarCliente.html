@@ -3,87 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Registrar | FreshHome</title>
+  <title>Registrar Cliente | FreshHome</title>
 
-  <!-- Estilos y fuentes -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../css/registrarCliente.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/registrarCliente.css">
 </head>
-
 <body>
-  <!-- Navegación -->
-  <nav class="d-flex justify-content-between align-items-center px-4 py-3 bg-dark fixed-top shadow">
-    <a th:href="@{/home/init}" class="text-accent fw-bold fs-4 text-decoration-none" title="Inicio">FreshHome</a>
-  </nav>
 
-  <div class="spacer" style="height: 80px;"></div>
+  <!-- Botón salir -->
+  <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <a href="inicioCliente.html" style="
+      background-color: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    " onmouseover="this.style.backgroundColor='var(--accent)'; this.style.color='var(--bg)';"
+       onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent)';">
+      Salir
+    </a>
+  </div>
 
-  <!-- Registro -->
-  <section id="registro" class="section py-5 px-3" data-aos="fade-up">
-    <div class="container">
-      <h2 class="text-center text-accent mb-4">Registro</h2>
-      <form class="register-form mx-auto" style="max-width: 500px;" data-aos="fade-up" data-aos-delay="200" id="registroForm"
-      	th:action="@{/auth/registro}" method="post" th:object="${nuevoUsuario}">
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre Completo</label>
-          <input type="text" class="form-control" id="nombre" placeholder="Juan Pérez" aria-label="Nombre Completo" required th:field="*{nombre}"/>
+  <!-- Contenedor principal -->
+  <section class="minimal-form">
+    <div class="form-container wide">
+      <!-- Logo -->
+      <img src="../static/img/FreshHome.png" alt="FreshHome Logo" style="width: 80px; margin-bottom: 10px;">
+      
+      <h2>Registrar Cliente</h2>
+
+      <form id="registroForm" class="grid-form">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" placeholder="Ej: Laura Gómez" required>
         </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Correo Electrónico</label>
-          <input type="email" class="form-control" id="email" placeholder="juanperez@gmail.com" aria-label="Correo Electrónico" required th:field="*{email}"/>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="correo@email.com" required>
         </div>
-        <div class="mb-3">
-          <label for="telefono" class="form-label">Teléfono</label>
-          <input type="tel" class="form-control" id="telefono" placeholder="+57 310 123 4567" aria-label="Teléfono" required th:field="*{telefono}"/>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" placeholder="3001234567" required>
         </div>
-        <div class="mb-3">
-          <label for="direccion" class="form-label">Dirección</label>
-          <input type="text" class="form-control" id="direccion" placeholder="Calle 10, Cartagena" aria-label="Dirección" required th:field="*{direccion}"/>
+
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" placeholder="Cra 10 #45-67" required>
         </div>
-         <div class="mb-3">
-          <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
-          <input type="datetime" class="form-control" id="fechaNacimiento" placeholder="Calle 10, Cartagena" aria-label="fechaNacimiento" required th:field="*{fechaNacimiento}"/>
+
+        <div class="form-group">
+          <label for="contrasena">Contraseña</label>
+          <input type="password" id="contrasena" placeholder="••••••••" required>
         </div>
-       <div>
-		  <label for="selection" class="form-label">Puesto</label>
-        	<select name="rol" class="form-select" id="selection" required th:field="*{rol}">
-            	<option value="CLIENT">Cliente</option>
-        		<option value="EMPLOYEE">Empleado</option>
-       		</select>
-       </div>
-        <div class="mb-3">
-          <label for="contrasena" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="contrasena" aria-label="Contraseña" required th:field="*{password}"/>
+
+        <div class="form-group">
+          <label for="confirmarContrasena">Confirmar contraseña</label>
+          <input type="password" id="confirmarContrasena" placeholder="••••••••" required>
         </div>
-        <div class="mb-4">
-          <label for="confirmar-contrasena" class="form-label">Confirmar Contraseña</label>
-          <input type="password" class="form-control" id="confirmar-contrasena" aria-label="Confirmar Contraseña" required/>
-        </div>
-        <div class="d-grid">
-          <button type="submit" class="btn btn-accent">Registrar</button>
+
+        <div class="form-button">
+          <button type="submit">Registrar</button>
         </div>
       </form>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="text-center py-4 text-muted bg-dark mt-5">
-    &copy; 2025 FreshHome. Todos los derechos reservados.
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1000, once: true });
-
-    // Función para redirigir después de registrar
     document.getElementById('registroForm').addEventListener('submit', function(e) {
-      e.preventDefault();  // Evita que el formulario se envíe y la página se recargue
-      window.location.href = './perfilCliente.html';  // Redirige a perfilCliente.html
+      e.preventDefault();
+      window.location.href = "paginaCliente.html";
     });
   </script>
+
 </body>
 </html>
