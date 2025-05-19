@@ -20,7 +20,9 @@ public class ServicioSolicitud implements ActionsSolicitud {
 	private UsuarioSesiones sesion;
 
 	@Override
-	public SolicitudEntity AgregarSolicitudCliente(SolicitudEntity solicitud) {
+	public SolicitudEntity AgregarSolicitudCliente(SolicitudEntity solicitud, UsuarioSesiones Cliente) {
+		solicitud.setDisponibilidad(true);
+		solicitud.setOcupados(false);
 		solicitud.setFechaSolicitud(LocalDateTime.now());
 		return rep.save(solicitud);
 	}

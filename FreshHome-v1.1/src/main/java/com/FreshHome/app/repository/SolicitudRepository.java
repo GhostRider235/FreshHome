@@ -20,4 +20,6 @@ import com.FreshHome.app.model.SolicitudEntity;
  */
 public interface SolicitudRepository extends MongoRepository<SolicitudEntity, ObjectId> {
 	List<SolicitudEntity> findByfechaSolicitudBetween(LocalDateTime entre,LocalDateTime hasta);	
+	List<SolicitudEntity> findByIdUsuarioAutor(Integer idUsuarioAutor);
+	List<SolicitudEntity> findByIdUsuarioAplicante(Integer idUsuarioAplicante);
 }

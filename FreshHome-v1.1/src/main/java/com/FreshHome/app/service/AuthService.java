@@ -1,5 +1,6 @@
 package com.FreshHome.app.service;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -56,7 +57,9 @@ public class AuthService implements UserDetailsServiceCustom {
 		
 		HttpSession sesionActual = at.getRequest().getSession(true);
 		
-		sesionActual.setAttribute("usuario",  user);
+		UsuarioEntity userServices = repNoSQL.findByidUsuario((int)user.getId()).orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado en nuestra base de datos"));
+		
+		sesionActual.setAttribute("servicioUsuarioActual", userServices);
 		
 		return User.withUsername(user.getEmail())
 				.password(user.getPassword())
