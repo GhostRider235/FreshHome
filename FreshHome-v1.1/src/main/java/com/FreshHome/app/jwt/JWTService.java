@@ -70,7 +70,8 @@ public class JWTService {
 	}
 
 	public int obtenerMongoId(String token) {
-		return extraerInfoClaims(token).get("id_mongo", Integer.class);
+		Claims claims = extraerInfoClaims(token);
+		return claims.get("id_mongo", Integer.class);
 	}
 
 	public String obtenerRol(String token) {
@@ -78,8 +79,9 @@ public class JWTService {
 	}
 	
 	public String getUsername(String token) {
-        return extraerInfoClaims(token).getSubject();
-    }
+		Claims claims = extraerInfoClaims(token);
+		return claims.getSubject();
+	}
 
 	// Validar el token
 	public boolean validarToken(String token, UserDetails user) {
@@ -100,28 +102,36 @@ public class JWTService {
 
 	// metodo para obtener el token de la cookie
 	public String obtenerTokenCookie(HttpServletRequest request) {
-		if (request.getCookies() == null)
-			return null;
-
-		for (Cookie i : request.getCookies()) {
-			if (i.getName().equals(NombreCookie)) {
-				return i.getValue();
+		System.out.println("=== Obteniendo token de cookie ===");
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				System.out.println("Cookie encontrada: " + cookie.getName());
+				if (NombreCookie.equals(cookie.getName())) {
+					System.out.println("Token encontrado en cookie");
+					return cookie.getValue();
+				}
 			}
 		}
-
+		System.out.println("No se encontró cookie de token");
 		return null;
 	}
 
 	//metodo para almacenar cookies
 	public void almacenarTokenCookie(HttpServletResponse response, String token) {
-		ResponseCookie cookie = ResponseCookie.from("freshHomeCookie", NombreCookie)
+		System.out.println("=== Almacenando token en cookie ===");
+		System.out.println("Token a almacenar: " + token);
+		
+		ResponseCookie cookie = ResponseCookie.from(NombreCookie, token)
 				.httpOnly(true)
-				.secure(true)
+				.secure(false) // Cambiar a true en producción con HTTPS
 				.path("/")
-				.maxAge(expirationTime)
+				.maxAge(expirationTime) // Usar el valor de application.properties
 				.sameSite("Strict")
 				.build();
-		response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+		
+		System.out.println("Cookie configurada: " + cookie.toString());
+		response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 	}
 
 	// Para cuando el usuario cierre la sesion

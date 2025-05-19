@@ -189,4 +189,78 @@
     .profile-edit-form .mb-4 {
       margin-bottom: 30px;
     }
+    
+    /*nuevos estilos*/
+    
+    body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 500;
+}
+
+nav a.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.profile-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: auto;
+}
+
+.profile-edit-form input {
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+}
+
+/* Botón estilo login */
+.btn-accent {
+  background-color: #3fc1c9;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-accent:hover {
+  background-color: #2ba7af;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+    
+    
+    
  

@@ -1,5 +1,6 @@
 package com.FreshHome.app.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,10 @@ public class ServicioSolicitud implements ActionsSolicitud {
 	private UsuarioSesiones sesion;
 
 	@Override
-	public SolicitudEntity AgregarSolicitudCliente(SolicitudEntity solicitud) {
+	public SolicitudEntity AgregarSolicitudCliente(SolicitudEntity solicitud, UsuarioSesiones Cliente) {
+		solicitud.setDisponibilidad(true);
+		solicitud.setOcupados(false);
+		solicitud.setFechaSolicitud(LocalDateTime.now());
 		return rep.save(solicitud);
 	}
 	

@@ -16,6 +16,6 @@ import com.FreshHome.app.model.UsuarioEntity;
  * Generated on 2025-04-27
  */
 public interface UsuarioRepository extends MongoRepository<UsuarioEntity, ObjectId> {
-	Optional<UsuarioRepository> findByidUsuario(int idUsuario);
+	Optional<UsuarioEntity> findByidUsuario(int idUsuario);
 	void deleteByIdUsuario(int idUsuario);
 }

@@ -1,5 +1,6 @@
 package com.FreshHome.app.service;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -11,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.FreshHome.app.jwt.JWTService;
 import com.FreshHome.app.model.HabilidadesEntity;
@@ -23,6 +26,8 @@ import com.FreshHome.app.repository.HabilidadesRepository;
 import com.FreshHome.app.repository.RolesSesionesRepository;
 import com.FreshHome.app.repository.UsuarioRepository;
 import com.FreshHome.app.repository.UsuarioSesionesRepository;
+
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class AuthService implements UserDetailsServiceCustom {
@@ -39,12 +44,27 @@ public class AuthService implements UserDetailsServiceCustom {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	public UsuarioSesiones findByEmail(String email) {
+		return repSQL.findByemail(email)
+			.orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+	}
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UsuarioSesiones user = repSQL.findByemail(username)
-				.orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
-		String autoridad = user.getAuthorities().stream().findFirst().map(GrantedAuthority::getAuthority).orElse(null);
-		return User.withUsername(user.getEmail()).password(user.getPassword()).roles(autoridad).build();
+		UsuarioSesiones user = findByEmail(username);
+		
+		ServletRequestAttributes at = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		
+		HttpSession sesionActual = at.getRequest().getSession(true);
+		
+		UsuarioEntity userServices = repNoSQL.findByidUsuario((int)user.getId()).orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado en nuestra base de datos"));
+		
+		sesionActual.setAttribute("servicioUsuarioActual", userServices);
+		
+		return User.withUsername(user.getEmail())
+				.password(user.getPassword())
+				.roles(user.getRol().getNombreRol())
+				.build();
 	}
 
 	@Override

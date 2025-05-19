@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Roles")
@@ -36,6 +38,10 @@ public class RolesSesiones {
 	public RolesSesiones(String nombreRol) {
 		super();
 		this.nombreRol = nombreRol;
+	}
+
+	public RolesSesiones() {
+		super();
 	}
 
 }

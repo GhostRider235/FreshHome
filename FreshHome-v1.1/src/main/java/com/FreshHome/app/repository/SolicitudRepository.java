@@ -1,5 +1,7 @@
 package com.FreshHome.app.repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,5 +19,7 @@ import com.FreshHome.app.model.SolicitudEntity;
  * Generated on 2025-04-27
  */
 public interface SolicitudRepository extends MongoRepository<SolicitudEntity, ObjectId> {
-	List<SolicitudEntity> findBy();	
+	List<SolicitudEntity> findByfechaSolicitudBetween(LocalDateTime entre,LocalDateTime hasta);	
+	List<SolicitudEntity> findByIdUsuarioAutor(Integer idUsuarioAutor);
+	List<SolicitudEntity> findByIdUsuarioAplicante(Integer idUsuarioAplicante);
 }

@@ -1,8 +1,10 @@
 package com.FreshHome.app.controllers;
 
 import java.io.IOException;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.server.Cookie;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Controller;
@@ -22,60 +24,78 @@ import com.FreshHome.app.utilities.SuccessHandlerSesion;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-
 @Controller
 @RequestMapping("/auth")
 public class AuthControl {
-	
+
 	@Autowired
 	private JWTService jwt;
-	
+
 	@Autowired
 	private AuthService service;
-	
+
 	@Autowired
 	private SuccessHandlerSesion successHandlerSesion;
-	
+
 	@GetMapping("/login")
 	public String iniciarSesion() {
 		return "InicioSesion";
 	}
-	
+
+
 	@GetMapping("/register")
 	public String registro(Model m) {
 		usuarioDTO user = new usuarioDTO();
-		m.addAttribute("nuevoUsuario",user);
-		return "registrarEmpleado";
+		m.addAttribute("nuevoUsuario", user);
+		return "registrarUsuarios";
 	}
 
 	@PostMapping("/register")
-	public String registrarUsuario(@ModelAttribute("nuevoUsuario") usuarioDTO entity,HttpServletResponse response, HttpServletRequest request) throws IOException, ServletException {
-		//Se crea el usuario y lo almacena
+	public String registrarUsuario(@ModelAttribute("nuevoUsuario") usuarioDTO entity, HttpServletResponse response,
+			HttpServletRequest request) throws IOException, ServletException {
+		// Se crea el usuario y lo almacena
 		UsuarioSesiones user = service.registrarUsuario(entity);
 		/**
-		 
-		 //Se genera el token
-		String token = jwt.generarToken(user, (int)user.getId());
-		//Lo almacena en la cookie
-		jwt.almacenarTokenCookie(response, token);
-		
-		//realiza la autenticacion
-		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user,null, user.getAuthorities());
-		
-		authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-		
-	    successHandlerSesion.onAuthenticationSuccess(request, response, authToken);
-		 * */
-		
-	    //no retorna nada porque el SuccessHandler se encarga de redireccionar
-		return "redirect/auth/login";
+		 * 
+		 * //Se genera el token
+		 * String token = jwt.generarToken(user, (int)user.getId());
+		 * //Lo almacena en la cookie
+		 * jwt.almacenarTokenCookie(response, token);
+		 * 
+		 * //realiza la autenticacion
+		 * UsernamePasswordAuthenticationToken authToken = new
+		 * UsernamePasswordAuthenticationToken(user,null, user.getAuthorities());
+		 * 
+		 * authToken.setDetails(new
+		 * WebAuthenticationDetailsSource().buildDetails(request));
+		 * 
+		 * successHandlerSesion.onAuthenticationSuccess(request, response, authToken);
+		 */
+
+		// no retorna nada porque el SuccessHandler se encarga de redireccionar
+		return "redirect:/auth/login";
 	}
-	
-	
-	
+
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		jakarta.servlet.http.Cookie cookie = new jakarta.servlet.http.Cookie("FreshHomeCookie", "");
+		cookie.setPath("/");
+		cookie.setHttpOnly(true);
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+		
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
+		
+		return "redirect:/auth/login?logout";
+	}
+
 }
