@@ -24,41 +24,27 @@
       <h1 class="text-center mt-5">Crear Solicitud de Servicio</h1>
 
       <form id="formCrearSolicitud" class="mt-4">
+
+
         <div class="mb-3">
-          <label for="clienteNombre" class="form-label">Nombre Completo</label>
-          <input type="text" class="form-control" id="clienteNombre" placeholder="Ingrese su nombre completo" required />
+          <label for="titulo" class="form-label">Correo Electrónico</label>
+          <input type="text" class="form-control" id="titulo" placeholder="Ingrese un titulo para su solicitud" required />
         </div>
 
         <div class="mb-3">
-          <label for="clienteCorreo" class="form-label">Correo Electrónico</label>
-          <input type="email" class="form-control" id="clienteCorreo" placeholder="Ingrese su correo electrónico" required />
+          <label for="Descripcion" class="form-label">Descripcion</label>
+          <textarea class="form-control" id="Descripcion" rows="3" placeholder="Agregue informacion sobre la solicitud que desea hacer" required></textarea>
         </div>
 
         <div class="mb-3">
-          <label for="clienteTelefono" class="form-label">Teléfono</label>
-          <input type="tel" class="form-control" id="clienteTelefono" placeholder="Ingrese su número de teléfono" required />
+          <label for="tarifa" class="form-label">Teléfono</label>
+          <input type="tel" class="form-control" id="tarifa" placeholder="Ingrese el valor de su solicitud" required />
         </div>
 
-        <div class="mb-3">
-          <label for="clienteDireccion" class="form-label">Dirección de Servicio</label>
-          <input type="text" class="form-control" id="clienteDireccion" placeholder="Ingrese la dirección de servicio" required />
-        </div>
 
-        <div class="mb-3">
-          <label for="servicioSeleccionado" class="form-label">Servicio Requerido</label>
-          <select class="form-select" id="servicioSeleccionado" required>
-            <option value="" disabled selected>Seleccione el servicio</option>
-            <option value="limpieza">Limpieza General</option>
-            <option value="reparacion">Reparación de Electrodomésticos</option>
-            <option value="mantenimiento">Mantenimiento de Jardines</option>
-            <option value="otros">Otros Servicios</option>
-          </select>
-        </div>
+        
 
-        <div class="mb-3">
-          <label for="comentarios" class="form-label">Comentarios Adicionales</label>
-          <textarea class="form-control" id="comentarios" rows="3" placeholder="Agregue comentarios adicionales si lo desea"></textarea>
-        </div>
+        
 
         <button type="submit" class="btn btn-primary">Crear Solicitud</button>
       </form>
@@ -69,16 +55,12 @@
       document.getElementById('formCrearSolicitud').addEventListener('submit', function(event) {
         event.preventDefault();
         
-        const nombre = document.getElementById('clienteNombre').value;
-        const correo = document.getElementById('clienteCorreo').value;
-        const telefono = document.getElementById('clienteTelefono').value;
-        const direccion = document.getElementById('clienteDireccion').value;
-        const servicio = document.getElementById('servicioSeleccionado').value;
-        const comentarios = document.getElementById('comentarios').value;
+        const titulo = document.getElementById('titulo').value;
+        const tarifa = document.getElementById('tarifa').value;
+        const descripcion = document.getElementById('Descripcion').value;
 
-        if (nombre && correo && telefono && direccion && servicio) {
+        if (titulo && tarifa  && descripcion) {
           alert('¡Solicitud creada con éxito!');
-          // Aquí puedes agregar el código para enviar los datos al servidor o a la base de datos.
         } else {
           alert('Por favor, complete todos los campos obligatorios.');
         }
